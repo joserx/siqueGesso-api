@@ -1,5 +1,6 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { FileEntity } from 'src/entities/file.entity';
 import { UsersEntity } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
 import { UserDto } from './user.dto';
@@ -16,7 +17,7 @@ export class UserService {
      * GET ALL USERS IN THE DATABASE
      */
     async find() {
-        return await this.userRepository.find();
+        return await this.userRepository.find({ relations: ['avatar']});
     }
 
     /**
@@ -24,7 +25,7 @@ export class UserService {
      */
     async findOne(id: number) {
         if (id && Number(id)) {
-            return await this.userRepository.findOne(id)
+            return await this.userRepository.findOne(id, {relations: ['avatar']})
         } else {
             throw new HttpException('No id provided', 500);
         }
@@ -40,7 +41,7 @@ export class UserService {
             } else {
                 let user = await this.userRepository.create(data)
                 await this.userRepository.save(user)
-                return await this.userRepository.findOne(user.id)
+                return await this.userRepository.findOne(user.id, {relations: ['avatar']})
             }
         } else {
             throw new HttpException('There must be an email and a password for a new user record', 500);
@@ -56,7 +57,7 @@ export class UserService {
                 throw new HttpException('The permission value must be more than zero.', 500);
             } else {
                 await this.userRepository.update(id, data);
-                return await this.userRepository.findOne(id);
+                return await this.userRepository.findOne(id, {relations: ['avatar']});
             }
         } else {
             throw new HttpException('No id provided', 500);

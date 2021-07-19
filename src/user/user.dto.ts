@@ -1,3 +1,5 @@
+import { FileDto } from "src/file/file.dto";
+
 export interface UserDto {
     id: number;
     permission: number;
@@ -7,4 +9,5 @@ export interface UserDto {
     date: Date;
     password: string;
     disabled: boolean;
+    avatar?: FileDto;
 }

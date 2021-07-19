@@ -1,5 +1,6 @@
 import * as bcrypt from 'bcryptjs';
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, BeforeInsert, OneToMany, OneToOne, JoinColumn, BeforeUpdate } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, BeforeInsert, OneToMany, OneToOne, JoinColumn, BeforeUpdate, ManyToOne, JoinTable } from "typeorm";
+import { FileEntity } from './file.entity';
 
 @Entity()
 export class UsersEntity{
@@ -27,6 +28,10 @@ export class UsersEntity{
 
     @Column('boolean', { nullable : false , default : false})
     disabled : boolean;
+
+    @ManyToOne(type => FileEntity, file => file.id, {nullable : true})
+    @JoinTable()
+    avatar : FileEntity;
     
     @BeforeInsert()
     async hashPassword() {
