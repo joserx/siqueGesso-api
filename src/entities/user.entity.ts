@@ -23,7 +23,7 @@ export class UsersEntity{
     @CreateDateColumn()
     date: Date;
     
-    @Column('text', {select: false})
+    @Column('text')
     password: string;
 
     @Column('boolean', { nullable : false , default : false})

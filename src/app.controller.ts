@@ -1,6 +1,8 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
 
+export const IS_PUBLIC_KEY = 'isPublic';
+
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}

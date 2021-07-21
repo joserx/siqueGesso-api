@@ -1,4 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { AuthService } from 'src/auth/auth.service';
 import { UserDto } from './user.dto';
 import { UserService } from './user.service';
 
@@ -6,7 +7,8 @@ import { UserService } from './user.service';
 export class UserController {
     
     constructor(
-        private readonly userService : UserService
+        private readonly userService : UserService,
+        private readonly authService : AuthService
     ) {}
 
     @Get()
@@ -34,9 +36,9 @@ export class UserController {
         return this.userService.delete(id);
     }
 
-    @Post('login')
+    @Post("login")
     login(@Body() data) {
-
+        return this.authService.login(data);
     }
 
 }

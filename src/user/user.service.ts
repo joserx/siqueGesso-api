@@ -32,6 +32,17 @@ export class UserService {
     }
 
     /**
+     * GET ONE USER BY ITS EMAIL
+     */
+    async findOneByEmail(email : string) {
+        if (email) {
+            return await this.userRepository.findOne({email}, {relations: ['avatar']})
+        } else {
+            throw new HttpException('No email provided', 500);
+        }
+    }
+
+    /**
      * CREATE A NEW USER
      */
     async create(data: Partial<UserDto>) {
