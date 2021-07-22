@@ -4,6 +4,7 @@ import { FileEntity } from 'src/entities/file.entity';
 import { UsersEntity } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
 import { UserDto } from './user.dto';
+import * as bcrypt from 'bcryptjs';
 
 @Injectable()
 export class UserService {
@@ -67,7 +68,8 @@ export class UserService {
             if (data.permission && data.permission < 0) {
                 throw new HttpException('The permission value must be more than zero.', 500);
             } else {
-                await this.userRepository.update(id, data);
+                data.password = await bcrypt.hash(data.password, 12);
+                await this.userRepository.update({id}, data);
                 return await this.userRepository.findOne(id, {relations: ['avatar']});
             }
         } else {

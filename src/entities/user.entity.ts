@@ -34,12 +34,12 @@ export class UsersEntity{
     avatar : FileEntity;
     
     @BeforeInsert()
-    async hashPassword() {
+    async hashPasswordCreate() {
         this.password = await bcrypt.hash(this.password, 12);
     }
 
     @BeforeUpdate()
-    async hashPassword2() {
+    async hashPasswordUpdate() {
         this.password = await bcrypt.hash(this.password, 12);
     }
     
