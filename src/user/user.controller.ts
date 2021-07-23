@@ -26,7 +26,7 @@ export class UserController {
         return this.userService.create(data);
     }
 
-    @Patch(':id')
+    @Put(':id')
     update(@Param('id') id : number, @Body() data : UserDto) {
         return this.userService.update(id, data);
     }
