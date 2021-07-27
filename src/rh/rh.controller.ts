@@ -14,6 +14,11 @@ export class RhController {
         return this.rhService.find()
     }
 
+    @Get('data')
+    data() {
+        return this.rhService.disabledData();
+    }
+
     @Get(':id')
     findOne(@Param('id') id : number) {
         return this.rhService.findOne(id);
@@ -25,7 +30,7 @@ export class RhController {
     }
 
     @Put(':id')
-    update(@Param('id') id : number, data : Partial<RhDto>) {
+    update(@Param('id') id : number, @Body() data : any) {
         return this.rhService.update(id, data);
     }
 

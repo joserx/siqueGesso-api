@@ -11,14 +11,14 @@ export class RhEntity {
     @Column('boolean', { nullable: false, default: false })
     disabled: boolean;
 
-    @Column('timestamp', { nullable: false, default: new Date() })
+    @Column({ nullable: false, default: new Date() })
     date: Date;
 
-    @ManyToOne(type => FileEntity, file => file.id, { nullable: true })
+    @ManyToOne(type => FileEntity, file => file.id, { nullable: true, cascade: true })
     @JoinTable()
     avatar: FileEntity;
 
-    @ManyToOne(type => UsersEntity, user => user.id, { nullable: false })
+    @ManyToOne(type => UsersEntity, user => user.id, { nullable: false, cascade: true })
     @JoinTable()
     createdBy: UsersEntity;
 
@@ -28,7 +28,7 @@ export class RhEntity {
     @Column({ nullable: true })
     surname: string;
 
-    @Column('timestamp', { nullable: true })
+    @Column({ nullable: true })
     birthDate: Date;
 
     @Column({ nullable: true })
@@ -121,13 +121,13 @@ export class RhEntity {
     @Column({ nullable: true })
     paycheck: string;
 
-    @Column('timestamp', { nullable: true })
+    @Column({ nullable: true })
     admission: Date;
 
     @Column({ nullable: true })
     experiencePeriod: string;
 
-    @Column('timestamp', { nullable: true })
+    @Column({ nullable: true })
     fireDate: Date;
 
     @Column({ nullable: true })
@@ -147,6 +147,9 @@ export class RhEntity {
 
     @Column({ nullable: true })
     bankAccountNumber: string;
+
+    @Column({ nullable: false, default: 1 })
+    status: number;
 
 
 }

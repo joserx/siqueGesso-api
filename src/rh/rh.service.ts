@@ -13,7 +13,7 @@ export class RhService {
     ) { }
 
     async find() {
-        return await this.rhRepository.find({ select: ['id', 'name', 'surname', 'role', 'department', 'admission', 'disabled'] });
+        return await this.rhRepository.find({ select: ['id', 'name', 'surname', 'status','role', 'department', 'admission', 'disabled'] });
     }
 
     async findOne(id: number) {
@@ -24,15 +24,21 @@ export class RhService {
         }
     }
 
+    async disabledData() {
+        let disabled = await this.rhRepository.find({ select: ['status'], where: {status : 0}})
+        let enabled = await this.rhRepository.find({ select: ['status'], where: {status : 1}})
+        return { disabled: disabled.length, enabled: enabled.length }
+    }
+
     async create(data: Partial<RhDto>) {
         let rh = await this.rhRepository.create(data);
         await this.rhRepository.save(rh);
         return await this.rhRepository.findOne(rh.id, { relations: ['createdBy', 'avatar'] });
     }
 
-    async update(id: number, data: Partial<RhDto>) {
+    async update(id: number, data: any) {
         if (id && Number(id)) {
-            await this.rhRepository.update(id, data);
+            await this.rhRepository.update({id}, data);
             return await this.rhRepository.findOne(id, { relations: ['createdBy', 'avatar'] });
         } else {
             throw new HttpException('No id provided', 500);
