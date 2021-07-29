@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, BeforeInsert, OneToMany, OneToOne, JoinColumn, BeforeUpdate, ManyToOne, JoinTable } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, BeforeInsert, OneToMany, OneToOne, JoinColumn, BeforeUpdate, ManyToOne, JoinTable, ManyToMany } from "typeorm";
 import { FileEntity } from "./file.entity";
 import { UsersEntity } from "./user.entity";
 
@@ -21,6 +21,10 @@ export class RhEntity {
     @ManyToOne(type => UsersEntity, user => user.id, { nullable: false, cascade: true })
     @JoinTable()
     createdBy: UsersEntity;
+
+    @ManyToMany(() => FileEntity, { cascade: true })
+    @JoinTable()
+    anexes : FileEntity[];
 
     @Column({ nullable: true })
     name: string;

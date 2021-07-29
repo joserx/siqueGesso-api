@@ -18,7 +18,7 @@ export class RhService {
 
     async findOne(id: number) {
         if (id && Number(id)) {
-            return await this.rhRepository.findOne(id, { relations: ['createdBy', 'avatar'] });
+            return await this.rhRepository.findOne(id, { relations: ['createdBy', 'avatar', 'anexes'] });
         } else {
             throw new HttpException('No id provided', 500);
         }
@@ -33,15 +33,18 @@ export class RhService {
     async create(data: Partial<RhDto>) {
         let rh = await this.rhRepository.create(data);
         await this.rhRepository.save(rh);
-        return await this.rhRepository.findOne(rh.id, { relations: ['createdBy', 'avatar'] });
+        return await this.rhRepository.findOne(rh.id, { relations: ['createdBy', 'avatar', 'anexes'] });
     }
 
     async update(id: number, data: any) {
-        if (id && Number(id)) {
-            await this.rhRepository.update({id}, data);
-            return await this.rhRepository.findOne(id, { relations: ['createdBy', 'avatar'] });
-        } else {
-            throw new HttpException('No id provided', 500);
+        let rh = await this.rhRepository.findOne(id, {relations: ['createdBy', 'avatar', 'anexes']});
+        if(rh) {
+            if (id && Number(id)) {
+                await this.rhRepository.save({id, ...rh, ...data });
+                return await this.rhRepository.findOne(id, { relations: ['createdBy', 'avatar', 'anexes'] });
+            } else {
+                throw new HttpException('No id provided', 500);
+            }
         }
     }
 
