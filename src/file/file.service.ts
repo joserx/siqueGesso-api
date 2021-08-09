@@ -26,13 +26,13 @@ export class FileService {
 
     async update(id : number, data : Partial<FileDto>) {
         await this.fileRepository.update(id, data);
-        return this.fileRepository.findOne(id);
+        return await this.fileRepository.findOne(id);
     }
 
     async create(data : Partial<FileDto>) {
         let file = await this.fileRepository.create(data);
         await this.fileRepository.save(file);
-        return this.fileRepository.findOne(file.id);
+        return await this.fileRepository.findOne(file.id);
     }
 
 }

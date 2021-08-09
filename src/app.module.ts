@@ -6,6 +6,8 @@ import { UserModule } from './user/user.module';
 import { FileModule } from './file/file.module';
 import { AuthModule } from './auth/auth.module';
 import { RhModule } from './rh/rh.module';
+import { ClientModule } from './client/client.module';
+import { AddressModule } from './address/address.module';
 
 @Module({
   imports: [
@@ -33,7 +35,9 @@ import { RhModule } from './rh/rh.module';
     UserModule,
     FileModule,
     AuthModule,
-    RhModule
+    RhModule,
+    ClientModule,
+    AddressModule
   ],
   controllers: [AppController],
   providers: [AppService],
