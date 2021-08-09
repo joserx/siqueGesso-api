@@ -7,16 +7,16 @@ export class ClientEntity {
     @PrimaryGeneratedColumn()
     id : number;
 
-    @Column()
+    @Column({ nullable : true })
     name : string;
 
-    @Column()
+    @Column({ nullable : true })
     surname : string;
 
-    @Column()
+    @Column({ nullable : true })
     cpf : string;
 
-    @Column()
+    @Column({ nullable : true })
     rg : string;
 
     @Column({ nullable : true })
@@ -25,11 +25,23 @@ export class ClientEntity {
     @Column({ nullable : true })
     telephone : string;
 
-    @Column('timestamp')
+    @Column('timestamp', { nullable : true })
     birthDate : Date;
 
-    @Column()
+    @Column({ nullable : true })
     email : string;
+
+    @Column({ nullable : true })
+    subscription : string;
+
+    @Column({ nullable : true })
+    socialReason : string;
+
+    @Column({ nullable : true })
+    fantasyName : string;
+
+    @Column({ nullable : true })
+    ramal : string;
 
     @ManyToMany(() => AddressEntity, address => address.id, {cascade : true})
     @JoinTable()
