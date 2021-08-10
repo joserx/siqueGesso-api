@@ -17,6 +17,21 @@ export class ClientEntity {
     cpf : string;
 
     @Column({ nullable : true })
+    cnpj : string;
+
+    @Column({ nullable : true })
+    birthDateCompany : string;
+
+    @Column({ nullable : true })
+    companyCellPhone : string;
+
+    @Column({ nullable : true })
+    companyTelephone : string;
+
+    @Column({ nullable : true })
+    companyEmail : string;
+
+    @Column({ nullable : true })
     rg : string;
 
     @Column({ nullable : true })
@@ -42,6 +57,9 @@ export class ClientEntity {
 
     @Column({ nullable : true })
     ramal : string;
+
+    @Column('boolean', { default: false, nullable : false  })
+    disabled : boolean;
 
     @ManyToMany(() => AddressEntity, address => address.id, {cascade : true})
     @JoinTable()

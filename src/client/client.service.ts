@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ClientEntity } from 'src/entities/client.entity';
 import { Repository } from 'typeorm';
@@ -12,7 +12,7 @@ export class ClientService {
     ) { }
 
     async find() {
-        return await this.clientRepository.find({ relations: ['addresses'] });
+        return await this.clientRepository.find({ select: ['id', 'name', 'surname', 'email', 'companyEmail', 'companyTelephone', 'telephone'], relations: ['addresses'] });
     }
 
     async findOne(id : number) {
@@ -26,7 +26,15 @@ export class ClientService {
     }
 
     async update(id : number, data : any) {
-
+        let client = await this.clientRepository.findOne(id, {relations: ['addresses']});
+        if(client) {
+            if (id && Number(id)) {
+                await this.clientRepository.save({id, ...client, ...data });
+                return await this.clientRepository.findOne(id, { relations: ['addresses'] });
+            } else {
+                throw new HttpException('No id provided', 500);
+            }
+        }
     }
 
     async delete(id : number) {
