@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { RhModule } from './rh/rh.module';
 import { ClientModule } from './client/client.module';
 import { AddressModule } from './address/address.module';
+import { ProviderModule } from './provider/provider.module';
 
 @Module({
   imports: [
@@ -37,7 +38,8 @@ import { AddressModule } from './address/address.module';
     AuthModule,
     RhModule,
     ClientModule,
-    AddressModule
+    AddressModule,
+    ProviderModule
   ],
   controllers: [AppController],
   providers: [AppService],
