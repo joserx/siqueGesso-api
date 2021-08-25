@@ -40,8 +40,8 @@ export class ClientEntity {
     @Column({ nullable : true })
     telephone : string;
 
-    @Column('timestamp', { nullable : true })
-    birthDate : Date;
+    @Column({ nullable : true })
+    birthDate : string;
 
     @Column({ nullable : true })
     email : string;
