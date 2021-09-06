@@ -1,4 +1,6 @@
+import { FaltasService } from "src/faltas/faltas.service";
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, BeforeInsert, OneToMany, OneToOne, JoinColumn, BeforeUpdate, ManyToOne, JoinTable, ManyToMany } from "typeorm";
+import { FaltaEntity } from "./falta.entity";
 import { FileEntity } from "./file.entity";
 import { UsersEntity } from "./user.entity";
 
@@ -39,7 +41,7 @@ export class RhEntity {
     rg: string;
 
     @Column({ nullable: true })
-    rgExpedicao: string;
+    rgExpedicao: Date;
 
     @Column({ nullable: true })
     rgOrgaoEmissor: string;
@@ -123,15 +125,15 @@ export class RhEntity {
     shift: string;
 
     @Column({ nullable: true })
-    paycheck: string;
+    paycheck: number;
 
-    @Column({ nullable: true })
+    @Column({ nullable: true})
     admission: Date;
 
     @Column({ nullable: true })
     experiencePeriod: string;
 
-    @Column({ nullable: true })
+    @Column({ nullable: true})
     fireDate: Date;
 
     @Column({ nullable: true })
@@ -155,5 +157,72 @@ export class RhEntity {
     @Column({ nullable: false, default: 1 })
     status: number;
 
+    @Column({ nullable: true })
+    filial: string;
 
+    @Column({ nullable: true })
+    lastExam: Date;
+
+    @Column({ nullable: true })
+    nextExam: Date;
+
+    @Column({ nullable: true })
+    vacationDueDate: Date;
+
+    @Column({ nullable: true })
+    workDays: number;
+
+    @Column({ nullable: true })
+    conducaoIda: number;
+
+    @Column({ nullable: true })
+    conducaoVolta: number;
+
+    @Column({ nullable: true })
+    linesNames: string;
+
+    @Column({ nullable: true })
+    totalValue: number;
+
+    @Column({ nullable: true })
+    tshirtSize: string;
+
+    @Column({ nullable: true })
+    lastDeliveryTshirt: Date;
+
+    @Column({ nullable: true })
+    pantsSize: string;
+
+    @Column({ nullable: true })
+    lastDeliveryPants: Date;
+
+    @Column({ nullable: true })
+    shoesSize: string;
+
+    @Column({ nullable: true })
+    lastDeliveryShoes: Date;
+
+    @Column({ nullable: true })
+    beltSize: string;
+
+    @Column({ nullable: true })
+    lastDeliveryBelt: Date;
+
+    @Column({ nullable: true })
+    glovesSize: string;
+
+    @Column({ nullable: true })
+    lastDeliveryGloves: Date;
+
+    @Column({ nullable: true })
+    jacketSize: string;
+
+    @Column({ nullable: true  })
+    lastDeliveryJacket: Date;
+
+    @Column({ nullable: true })
+    duplaFuncao: number;
+
+    @OneToMany(()=>FaltaEntity, falta=> falta.rh, {nullable: true, cascade:['insert', 'update']})
+    falta: FaltaEntity;
 }

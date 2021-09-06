@@ -13,12 +13,12 @@ export class RhService {
     ) { }
 
     async find() {
-        return await this.rhRepository.find({ select: ['id', 'name', 'surname', 'status','role', 'department', 'admission', 'disabled'] });
+        return await this.rhRepository.find({ select: ['id', 'name', 'surname', 'status','role', 'department', 'admission', 'disabled', 'filial'] });
     }
 
     async findOne(id: number) {
         if (id && Number(id)) {
-            return await this.rhRepository.findOne(id, { relations: ['createdBy', 'avatar', 'anexes'] });
+            return await this.rhRepository.findOne(id, { relations: ['createdBy', 'avatar', 'anexes', 'falta'] });
         } else {
             throw new HttpException('No id provided', 500);
         }

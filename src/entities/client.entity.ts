@@ -19,8 +19,8 @@ export class ClientEntity {
     @Column({ nullable : true })
     cnpj : string;
 
-    @Column({ nullable : true })
-    birthDateCompany : string;
+    @Column({ nullable: true })
+    birthDateCompany : Date;
 
     @Column({ nullable : true })
     companyCellPhone : string;
@@ -40,8 +40,8 @@ export class ClientEntity {
     @Column({ nullable : true })
     telephone : string;
 
-    @Column({ nullable : true })
-    birthDate : string;
+    @Column({ nullable: true})
+    birthDate : Date;
 
     @Column({ nullable : true })
     email : string;
