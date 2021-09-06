@@ -9,6 +9,8 @@ import { RhModule } from './rh/rh.module';
 import { ClientModule } from './client/client.module';
 import { AddressModule } from './address/address.module';
 import { ProviderModule } from './provider/provider.module';
+import { FaltasModule } from './faltas/faltas.module';
+import { FilialModule } from './filial/filial.module';
 
 @Module({
   imports: [
@@ -39,7 +41,9 @@ import { ProviderModule } from './provider/provider.module';
     RhModule,
     ClientModule,
     AddressModule,
-    ProviderModule
+    ProviderModule,
+    FilialModule,
+    FaltasModule
   ],
   controllers: [AppController],
   providers: [AppService],
