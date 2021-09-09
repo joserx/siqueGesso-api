@@ -29,7 +29,6 @@ export class FaltasController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    console.log(id)
     return this.faltasService.remove(+id);
   }
 }
