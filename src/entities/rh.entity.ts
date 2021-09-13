@@ -220,7 +220,7 @@ export class RhEntity {
     @Column({ nullable: true  })
     lastDeliveryJacket: Date;
 
-    @Column({ nullable: true })
+    @Column({ nullable: true, type: "float" })
     duplaFuncao: number;
 
     @OneToMany(()=>FaltaEntity, falta=> falta.rh, {nullable: true, cascade:['insert', 'update']})
