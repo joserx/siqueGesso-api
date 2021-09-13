@@ -11,15 +11,16 @@ import { AddressModule } from './address/address.module';
 import { ProviderModule } from './provider/provider.module';
 import { FaltasModule } from './faltas/faltas.module';
 import { FilialModule } from './filial/filial.module';
+import { StockModule } from './stock/stock.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: '161.35.176.125',
+      host: 'localhost',
       port: 5432,
-      username: 'finger',
-      password: 'finger@20!',
+      username: 'postgres',
+      password: 'root',
       database: 'sique_gesso',
       synchronize: true,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
@@ -43,7 +44,8 @@ import { FilialModule } from './filial/filial.module';
     AddressModule,
     ProviderModule,
     FilialModule,
-    FaltasModule
+    FaltasModule,
+    StockModule
   ],
   controllers: [AppController],
   providers: [AppService],
