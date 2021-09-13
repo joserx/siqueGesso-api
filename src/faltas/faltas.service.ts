@@ -32,7 +32,7 @@ export class FaltasService {
     return `This action updates a #${id} falta`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} falta`;
+  async remove(id: number) {
+    return await this.faltasRepository.delete(id)
   }
 }
