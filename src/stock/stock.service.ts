@@ -41,7 +41,7 @@ export class StockService {
     })
   }
 
-  async findAll() {
+  async findAll()  : Promise<Stock[] | undefined>{
     return this.stockRepository.find({
       select: this.select,
       relations: this.relations
@@ -50,7 +50,7 @@ export class StockService {
     })
   }
 
-  async findOne(id: number) {
+  async findOne(id: number) : Promise<Stock | undefined> {
     return this.stockRepository.findOne(id, {
       select: this.select
     }).catch(e => {
@@ -58,19 +58,5 @@ export class StockService {
     })
   }
 
-  async update(id: number, updateStockDto: UpdateStockDto) {
-    let { min, max, current } = updateStockDto;
-
-    if (min < 0)
-      throw new HttpException('Número minímo não deve ser negativo', HttpStatus.BAD_REQUEST)
-    
-    if (current < min || current > max)
-      throw new HttpException('Estoque atual deve estar entre Min e Max', HttpStatus.BAD_REQUEST)
-
-    this.stockRepository.update(id, updateStockDto).catch(e => {
-      throw new HttpException(e, HttpStatus.INTERNAL_SERVER_ERROR)
-    })
-    
-  }
 
 }
