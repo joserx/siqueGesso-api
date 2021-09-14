@@ -223,6 +223,6 @@ export class RhEntity {
     @Column({ nullable: true })
     duplaFuncao: number;
 
-    @OneToMany(()=>FaltaEntity, falta=> falta.rh, {nullable: true, cascade:['insert', 'update']})
+    @OneToMany(()=>FaltaEntity, falta=> falta.rh, { nullable: true, cascade:['insert', 'update']} )
     falta: FaltaEntity;
 }

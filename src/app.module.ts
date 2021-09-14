@@ -44,8 +44,7 @@ import { StockModule } from './stock/stock.module';
     AddressModule,
     ProviderModule,
     FilialModule,
-    FaltasModule,
-    StockModule
+    FaltasModule
   ],
   controllers: [AppController],
   providers: [AppService],
