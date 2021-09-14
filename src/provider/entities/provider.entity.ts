@@ -50,9 +50,10 @@ export class ProviderEntity {
     @Column({ nullable: false })
     first_payment: Date;
 
+    @Column({ nullable: true })
+    notes: string;
+
     @Column({ nullable: false})
     last_payment: Date;
 
-    @Column({ nullable: true })
-    notes: string;
 }
