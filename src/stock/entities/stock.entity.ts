@@ -16,8 +16,8 @@ export class Stock {
     @Column({ nullable: false })
     current: number;
 
-    /*@Column({ nullable: false })
-    localizacao: number;*/
+    @Column({ nullable: false })
+    localizacao: string;
 
 }
 
