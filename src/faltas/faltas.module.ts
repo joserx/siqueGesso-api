@@ -3,6 +3,7 @@ import { FaltasService } from './faltas.service';
 import { FaltasController } from './faltas.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { FaltaEntity } from 'src/entities/falta.entity';
+import { RhEntity } from 'src/entities/rh.entity';
 
 @Module({
   controllers: [FaltasController],
@@ -10,5 +11,6 @@ import { FaltaEntity } from 'src/entities/falta.entity';
   imports: [TypeOrmModule.forFeature([
     FaltaEntity
   ])],
+  exports: [ FaltasService ]
 })
 export class FaltasModule {}

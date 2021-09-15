@@ -1,3 +1,4 @@
+import { FaltaEntity } from "src/entities/falta.entity";
 import { FileDto } from "src/file/file.dto";
 import { UserDto } from "src/user/user.dto";
 
@@ -71,4 +72,5 @@ export interface RhDto {
     jacketSize: string;
     lastDeliveryJacket: string;
     duplaFuncao: number;
+    falta: Array<FaltaEntity>;
 }

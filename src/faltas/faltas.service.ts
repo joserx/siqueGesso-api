@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateFaltaDto } from './dto/create-falta.dto';
 import { UpdateFaltaDto } from './dto/update-falta.dto';
 import { Repository } from 'typeorm';
 import { FaltaEntity } from 'src/entities/falta.entity';
