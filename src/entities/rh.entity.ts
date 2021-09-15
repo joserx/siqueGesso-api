@@ -225,4 +225,5 @@ export class RhEntity {
 
     @OneToMany(()=>FaltaEntity, falta=> falta.rh, { nullable: true, cascade:['insert', 'update']})
     falta: FaltaEntity[];
+
 }

@@ -11,6 +11,6 @@ export class FaltaEntity{
     @Column({ nullable : true })
     tipo: string;
 
-    @ManyToOne(()=>RhEntity, rh=> rh.falta, { nullable: true, cascade: true})
+    @ManyToOne(() => RhEntity, rh => rh.falta, { nullable: true, cascade: true})
     rh: RhEntity[];
 }

@@ -2,7 +2,7 @@ import { FaltaEntity } from "src/entities/falta.entity";
 import { FileDto } from "src/file/file.dto";
 import { UserDto } from "src/user/user.dto";
 
-export interface RhDto {
+export interface RhDto { falta
     id: number;
     disabled: boolean;
     date: string;

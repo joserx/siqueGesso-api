@@ -9,6 +9,7 @@ export class FaltasController {
 
   @Post()
   create(@Body() createFaltaDto: CreateFaltaDto) {
+    console.log(createFaltaDto)
     return this.faltasService.create(createFaltaDto);
   }
 
