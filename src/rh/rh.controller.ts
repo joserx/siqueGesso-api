@@ -31,6 +31,7 @@ export class RhController {
 
     @Put(':id')
     update(@Param('id') id : number, @Body() data : any) {
+        console.log(data)
         return this.rhService.update(id, data);
     }
 

@@ -1,15 +1,15 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { RhEntity } from 'src/entities/rh.entity';
+import { FaltasService } from 'src/faltas/faltas.service';
 import { Repository } from 'typeorm';
-import { RhDto } from './rh.dto';
 
 @Injectable()
 export class RhService {
-
     constructor(
         @InjectRepository(RhEntity)
-        private readonly rhRepository: Repository<RhEntity>
+        private readonly rhRepository: Repository<RhEntity>,
+        private readonly faltaService: FaltasService
     ) { }
 
     async find() {
@@ -30,10 +30,10 @@ export class RhService {
         return { disabled: disabled.length, enabled: enabled.length }
     }
 
-    async create(data: Partial<RhDto>) {
+    async create(data: any) {
         let rh = await this.rhRepository.create(data);
-        await this.rhRepository.save(rh);
-        return await this.rhRepository.findOne(rh.id, { relations: ['createdBy', 'avatar', 'anexes'] });
+        console.log(rh)
+        return await this.rhRepository.save(rh);
     }
 
     async update(id: number, data: any) {
@@ -50,7 +50,10 @@ export class RhService {
 
     async delete(id: number) {
         if (id && Number(id)) {
-            return await this.rhRepository.delete(id);
+            for(let falta of (await this.rhRepository.findOne(id, {relations: ['falta']})).falta){
+                await this.faltaService.remove(falta.id)
+            }
+            return await this.rhRepository.delete(id); 
         } else {
             throw new HttpException('No id provided', 500);
         }

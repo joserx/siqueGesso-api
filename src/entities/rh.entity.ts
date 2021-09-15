@@ -28,22 +28,22 @@ export class RhEntity {
     @JoinTable()
     anexes : FileEntity[];
 
-    @Column({ nullable: true })
+    @Column()
     name: string;
 
-    @Column({ nullable: true })
+    @Column()
     surname: string;
 
-    @Column({ nullable: true })
+    @Column('timestamp')
     birthDate: Date;
 
-    @Column({ nullable: true })
+    @Column()
     rg: string;
 
-    @Column({ nullable: true })
+    @Column('timestamp')
     rgExpedicao: Date;
 
-    @Column({ nullable: true })
+    @Column()
     rgOrgaoEmissor: string;
 
     @Column({ nullable: true })
@@ -61,13 +61,13 @@ export class RhEntity {
     @Column({ nullable: true })
     deficiency: string;
 
-    @Column({ nullable: true })
+    @Column()
     scholarship: string;
 
-    @Column({ nullable: true })
+    @Column()
     nacionality: string;
 
-    @Column({ nullable: true })
+    @Column()
     naturality: string;
 
     @Column({ nullable: true })
@@ -76,64 +76,64 @@ export class RhEntity {
     @Column({ nullable: true })
     fatherName: string;
 
-    @Column({ nullable: true })
+    @Column()
     cep: string;
 
-    @Column({ nullable: true })
+    @Column()
     street: string;
 
-    @Column({ nullable: true })
+    @Column()
     addressNumber: string;
 
-    @Column({ nullable: true })
+    @Column()
     addressComplement: string;
 
-    @Column({ nullable: true })
+    @Column()
     neighborhood: string;
 
-    @Column({ nullable: true })
+    @Column()
     city: string;
 
-    @Column({ nullable: true })
+    @Column()
     state: string;
 
-    @Column({ nullable: true })
+    @Column()
     telephone: string;
 
-    @Column({ nullable: true })
+    @Column()
     whatsapp: string;
 
-    @Column({ nullable: true })
+    @Column()
     emergencyTelephone: string;
 
-    @Column({ nullable: true })
+    @Column()
     personalEmail: string;
 
     @Column({ nullable: true })
     corporativeEmail: string;
 
-    @Column({ nullable: true })
+    @Column()
     department: string;
 
-    @Column({ nullable: true })
+    @Column()
     role: string;
 
-    @Column({ nullable: true })
+    @Column()
     contractType: string;
 
-    @Column({ nullable: true })
+    @Column()
     shift: string;
 
-    @Column({ nullable: true })
+    @Column()
     paycheck: number;
 
-    @Column({ nullable: true})
+    @Column('timestamp')
     admission: Date;
 
-    @Column({ nullable: true })
+    @Column()
     experiencePeriod: string;
 
-    @Column({ nullable: true})
+    @Column('timestamp', { nullable: true })
     fireDate: Date;
 
     @Column({ nullable: true })
@@ -142,31 +142,31 @@ export class RhEntity {
     @Column({ nullable: true })
     mei: string;
 
-    @Column({ nullable: true })
+    @Column()
     bank: string;
 
-    @Column({ nullable: true })
+    @Column()
     bankAccountType: string;
 
-    @Column({ nullable: true })
+    @Column()
     bankAgency: string;
 
-    @Column({ nullable: true })
+    @Column()
     bankAccountNumber: string;
 
     @Column({ nullable: false, default: 1 })
     status: number;
 
-    @Column({ nullable: true })
+    @Column()
     filial: string;
 
-    @Column({ nullable: true })
+    @Column('timestamp', { nullable: true })
     lastExam: Date;
 
-    @Column({ nullable: true })
+    @Column('timestamp', { nullable: true })
     nextExam: Date;
 
-    @Column({ nullable: true })
+    @Column('timestamp', { nullable: true })
     vacationDueDate: Date;
 
     @Column({ nullable: true })
@@ -178,7 +178,7 @@ export class RhEntity {
     @Column({ nullable: true })
     conducaoVolta: number;
 
-    @Column({ nullable: true })
+    @Column({  nullable: true})
     linesNames: string;
 
     @Column({ nullable: true })
@@ -187,42 +187,43 @@ export class RhEntity {
     @Column({ nullable: true })
     tshirtSize: string;
 
-    @Column({ nullable: true })
+    @Column('timestamp', { nullable: true })
     lastDeliveryTshirt: Date;
 
     @Column({ nullable: true })
     pantsSize: string;
 
-    @Column({ nullable: true })
+    @Column('timestamp', { nullable: true })
     lastDeliveryPants: Date;
 
     @Column({ nullable: true })
     shoesSize: string;
 
-    @Column({ nullable: true })
+    @Column('timestamp', { nullable: true })
     lastDeliveryShoes: Date;
 
     @Column({ nullable: true })
     beltSize: string;
 
-    @Column({ nullable: true })
+    @Column('timestamp', { nullable: true })
     lastDeliveryBelt: Date;
 
     @Column({ nullable: true })
     glovesSize: string;
 
-    @Column({ nullable: true })
+    @Column('timestamp', { nullable: true })
     lastDeliveryGloves: Date;
 
     @Column({ nullable: true })
     jacketSize: string;
 
-    @Column({ nullable: true  })
+    @Column('timestamp', { nullable: true })
     lastDeliveryJacket: Date;
 
-    @Column({ nullable: true })
+    @Column({ nullable: true, type: "float" })
     duplaFuncao: number;
 
-    @OneToMany(()=>FaltaEntity, falta=> falta.rh, { nullable: true, cascade:['insert', 'update']} )
-    falta: FaltaEntity;
+    @OneToMany(()=>FaltaEntity, falta=> falta.rh, { nullable: true, cascade:['insert', 'update']})
+    falta: FaltaEntity[];
+
 }
