@@ -21,9 +21,9 @@ export class ProviderService {
 
   async create(createProviderDto: CreateProviderDto) {
 
-    const payment_coditions = await this.MatchPayment( createProviderDto.payment_condition )
+    // const payment_coditions = await this.MatchPayment( createProviderDto.payment_condition )
     let obj: any = createProviderDto;
-    obj.payment_codition = payment_coditions;
+    // obj.payment_codition = payment_coditions;
 
     let providerObj = this.providerRepository.create(obj);
 
@@ -33,7 +33,7 @@ export class ProviderService {
   }
 
   async findAll() : Promise<ProviderEntity[] | undefined> {
-    return this.providerRepository.find().catch(e => {
+    return this.providerRepository.find({ relations: ['contacts'] }).catch(e => {
       throw new HttpException(e, HttpStatus.INTERNAL_SERVER_ERROR)
     })
   }

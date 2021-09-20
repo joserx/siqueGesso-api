@@ -44,8 +44,8 @@ export class ProviderEntity {
     @OneToMany(() => Contact, contact => contact.provider, { nullable: false, cascade: ['insert', 'update'] })
     contacts: Contact[]
     
-    @ManyToMany(() => PaymentCondition, paymentCond => paymentCond.provider, { nullable: false, cascade:['insert', 'update'] })
-    payment_codition: PaymentCondition[]    
+    @ManyToMany(() => PaymentCondition, paymentCond => paymentCond.provider, { nullable: true, cascade:['insert', 'update'] })
+    payment_codition: PaymentCondition[]
 
     @Column({ nullable: false })
     first_payment: Date;
