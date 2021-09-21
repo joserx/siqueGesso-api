@@ -20,7 +20,7 @@ import { StockModule } from './stock/stock.module';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'root',
+      password: 'admin',
       database: 'sique_gesso',
       synchronize: true,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],

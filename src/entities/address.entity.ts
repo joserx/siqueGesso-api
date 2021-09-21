@@ -9,6 +9,9 @@ export class AddressEntity {
     id : number;
 
     @Column({ nullable : true })
+    cep : string;
+
+    @Column({ nullable : true })
     street : string;
 
     @Column({ nullable : true })
