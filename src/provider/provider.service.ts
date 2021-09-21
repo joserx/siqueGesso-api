@@ -1,7 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { rejects } from 'assert';
-import { resolve } from 'path';
 import { Repository } from 'typeorm';
 import { CreateProviderDto } from './dto/create-provider.dto';
 import { UpdateProviderDto } from './dto/update-provider.dto';
@@ -33,7 +31,7 @@ export class ProviderService {
   }
 
   async findAll() : Promise<ProviderEntity[] | undefined> {
-    return this.providerRepository.find({ relations: ['contacts'] }).catch(e => {
+    return this.providerRepository.find({ relations: ['contacts', 'address'] }).catch(e => {
       throw new HttpException(e, HttpStatus.INTERNAL_SERVER_ERROR)
     })
   }

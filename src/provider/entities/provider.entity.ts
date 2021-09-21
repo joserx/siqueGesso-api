@@ -1,6 +1,6 @@
 import { AddressEntity } from "src/entities/address.entity";
 import { PaymentCondition } from "src/provider/entities/payment_condition.entity";
-import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, DeleteDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Contact } from "src/provider/entities/contact.entity";
 
 
@@ -56,4 +56,6 @@ export class ProviderEntity {
     @Column({ nullable: false})
     last_payment: Date;
 
+    @DeleteDateColumn()
+    deleted_at: Date
 }
