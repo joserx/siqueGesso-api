@@ -32,7 +32,6 @@ export class RhService {
 
     async create(data: any) {
         let rh = await this.rhRepository.create(data);
-        console.log(rh)
         return await this.rhRepository.save(rh);
     }
 
