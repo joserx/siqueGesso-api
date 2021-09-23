@@ -5,7 +5,13 @@ export class FaltaEntity{
     @PrimaryGeneratedColumn()
     id : number;
 
-    @Column({ nullable : true })
+    @Column({ nullable: true })
+    colaborador: string;
+
+    @Column({ nullable: true })
+    cargo: string
+
+    @Column('timestamp', { nullable : true })
     data: Date;
 
     @Column({ nullable : true })

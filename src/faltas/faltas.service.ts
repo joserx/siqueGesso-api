@@ -19,8 +19,8 @@ export class FaltasService {
     console.log(falta)
   }
 
-  findAll() {
-    return `This action returns all faltas`;
+  async findAll() {
+    return await this.faltasRepository.find()
   }
 
   findOne(id: number) {

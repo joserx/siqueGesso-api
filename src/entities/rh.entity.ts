@@ -47,7 +47,7 @@ export class RhEntity {
     rgOrgaoEmissor: string;
 
     @Column({ nullable: true })
-    cnpj: string;
+    cpfcnpj: string;
 
     @Column({ nullable: true })
     cnh: string;
@@ -222,6 +222,9 @@ export class RhEntity {
 
     @Column({ nullable: true, type: "float" })
     duplaFuncao: number;
+
+    @Column({ nullable: true })
+    vale: string;
 
     @OneToMany(()=>FaltaEntity, falta=> falta.rh, { nullable: true, cascade:['insert', 'update']})
     falta: FaltaEntity[];

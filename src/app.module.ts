@@ -12,12 +12,13 @@ import { ProviderModule } from './provider/provider.module';
 import { FaltasModule } from './faltas/faltas.module';
 import { FilialModule } from './filial/filial.module';
 import { StockModule } from './stock/stock.module';
+import { VtModule } from './vt/vt.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: '161.35.176.125',
       port: 5432,
       username: 'postgres',
       password: 'admin',
@@ -44,7 +45,8 @@ import { StockModule } from './stock/stock.module';
     AddressModule,
     ProviderModule,
     FilialModule,
-    FaltasModule
+    FaltasModule,
+    VtModule
   ],
   controllers: [AppController],
   providers: [AppService],
