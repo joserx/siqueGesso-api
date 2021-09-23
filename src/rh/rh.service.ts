@@ -1,5 +1,6 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { of } from 'rxjs';
 import { RhEntity } from 'src/entities/rh.entity';
 import { FaltasService } from 'src/faltas/faltas.service';
 import { Repository } from 'typeorm';
@@ -13,7 +14,7 @@ export class RhService {
     ) { }
 
     async find() {
-        return await this.rhRepository.find({ select: ['id', 'name', 'surname', 'status','role', 'department', 'admission', 'disabled', 'filial'] });
+        return await this.rhRepository.find();
     }
 
     async findOne(id: number) {

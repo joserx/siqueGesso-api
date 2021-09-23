@@ -11,7 +11,7 @@ export class FaltaEntity{
     @Column({ nullable: true })
     cargo: string
 
-    @Column({ nullable : true })
+    @Column('timestamp', { nullable : true })
     data: Date;
 
     @Column({ nullable : true })
