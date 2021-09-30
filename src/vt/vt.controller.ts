@@ -22,9 +22,9 @@ export class VtController {
     return this.vtService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateVtDto: UpdateVtDto) {
-    return this.vtService.update(+id, updateVtDto);
+  @Patch()
+  update(@Body() data: any) {
+    return this.vtService.update(data.id, data);
   }
 
   @Delete(':id')

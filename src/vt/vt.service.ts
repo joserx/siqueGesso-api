@@ -1,26 +1,40 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { VtEntity } from 'src/entities/vt.entity';
+import { Repository } from 'typeorm';
 import { CreateVtDto } from './dto/create-vt.dto';
 import { UpdateVtDto } from './dto/update-vt.dto';
 
 @Injectable()
 export class VtService {
-  create(createVtDto: CreateVtDto) {
-    return 'This action adds a new vt';
+
+  constructor(
+    @InjectRepository(VtEntity)
+    private readonly vtRepository: Repository<VtEntity>
+  ){}
+
+  async create(data) {
+    let vt = this.vtRepository.create(data)
+    return await this.vtRepository.save(vt)
   }
 
-  findAll() {
-    return `This action returns all vt`;
+  async findAll() {
+    return await this.vtRepository.find()
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} vt`;
+  async findOne(id: number) {
+    if(id && Number(id)){
+      return await this.vtRepository.findOne(id);
+    }else{
+      throw new HttpException('No id provided', 500);
+    }
   }
 
-  update(id: number, updateVtDto: UpdateVtDto) {
-    return `This action updates a #${id} vt`;
+  async update(id: number, data: any) {
+    await this.vtRepository.update(id, data)
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} vt`;
+  async remove(id: number) {
+    return await this.vtRepository.delete(id);
   }
 }
