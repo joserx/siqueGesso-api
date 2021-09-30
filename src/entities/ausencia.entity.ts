@@ -1,7 +1,8 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { RhEntity } from "./rh.entity";
+
 @Entity()
-export class FaltaEntity{
+export class AusenciaEntity {
     @PrimaryGeneratedColumn()
     id : number;
 
@@ -17,18 +18,12 @@ export class FaltaEntity{
     @Column({ nullable : true })
     tipo: string;
 
-    @Column({nullable: true})
-    periodo: string;
+    @Column({ nullable: true })
+    de: Date
 
-    @Column({nullable: true})
-    tempo: number;
+    @Column({ nullable: true })
+    ate: Date
 
-    @Column({nullable: true})
-    diasAtestado: string;
-
-    @Column({nullable: true})
-    atestado: string;
-
-    @ManyToOne(() => RhEntity, rh => rh.falta, { nullable: true, cascade: true})
+    @ManyToOne(() => RhEntity, rh => rh.ausencia, { nullable: true, cascade: true})
     rh: RhEntity[];
 }

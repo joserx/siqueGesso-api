@@ -13,6 +13,8 @@ import { FaltasModule } from './faltas/faltas.module';
 import { FilialModule } from './filial/filial.module';
 import { StockModule } from './stock/stock.module';
 import { VtModule } from './vt/vt.module';
+import { AusenciaModule } from './ausencia/ausencia.module';
+import { ExamesModule } from './exames/exames.module';
 
 @Module({
   imports: [
@@ -20,8 +22,8 @@ import { VtModule } from './vt/vt.module';
       type: 'postgres',
       host: '161.35.176.125',
       port: 5432,
-      username: 'postgres',
-      password: 'admin',
+      username: 'finger',
+      password: 'finger@20!',
       database: 'sique_gesso',
       synchronize: true,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
@@ -46,7 +48,9 @@ import { VtModule } from './vt/vt.module';
     ProviderModule,
     FilialModule,
     FaltasModule,
-    VtModule
+    VtModule,
+    AusenciaModule,
+    ExamesModule
   ],
   controllers: [AppController],
   providers: [AppService],

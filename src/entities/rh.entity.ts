@@ -1,8 +1,10 @@
-import { FaltasService } from "src/faltas/faltas.service";
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, BeforeInsert, OneToMany, OneToOne, JoinColumn, BeforeUpdate, ManyToOne, JoinTable, ManyToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, JoinTable, ManyToMany } from "typeorm";
+import { AusenciaEntity } from "./ausencia.entity";
+import { ExameEntity } from "./exame.entity";
 import { FaltaEntity } from "./falta.entity";
 import { FileEntity } from "./file.entity";
 import { UsersEntity } from "./user.entity";
+import { VtEntity } from "./vt.entity";
 
 @Entity()
 export class RhEntity {
@@ -170,9 +172,6 @@ export class RhEntity {
     vacationDueDate: Date;
 
     @Column({ nullable: true })
-    workDays: number;
-
-    @Column({ nullable: true })
     conducaoIda: number;
 
     @Column({ nullable: true })
@@ -226,7 +225,28 @@ export class RhEntity {
     @Column({ nullable: true })
     vale: string;
 
-    @OneToMany(()=>FaltaEntity, falta=> falta.rh, { nullable: true, cascade:['insert', 'update']})
+    @Column({ nullable: true })
+    pix: string;
+
+    @Column({ nullable: true })
+    pcd: string;
+
+    @Column({ nullable: true })
+    abafador: string;
+
+    @Column({ nullable: true })
+    lastDelveryAbafador: string;
+
+    @OneToMany(()=>FaltaEntity, falta=> falta.rh, { nullable: true, onDelete: "CASCADE", cascade:['insert', 'update']})
     falta: FaltaEntity[];
+
+    @OneToMany(()=>AusenciaEntity, ausencia=> ausencia.rh, { nullable: true, onDelete: "CASCADE", cascade:['insert', 'update']})
+    ausencia: AusenciaEntity[];
+
+    @OneToMany(()=>ExameEntity, exame=> exame.rh, { nullable: true, onDelete: "CASCADE", cascade:['insert', 'update']})
+    exame: ExameEntity[];
+
+    @OneToMany(()=>VtEntity, vt => vt.rh, { nullable: true, onDelete: "CASCADE", cascade:['insert', 'update']})
+    vt: VtEntity[];
 
 }
