@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, JoinTable, ManyToMany } from "typeorm";
+import { AddCargoEntity } from "./add-cargo.entity";
 import { AusenciaEntity } from "./ausencia.entity";
 import { ExameEntity } from "./exame.entity";
 import { FaltaEntity } from "./falta.entity";
@@ -117,8 +118,8 @@ export class RhEntity {
     @Column()
     department: string;
 
-    @Column()
-    role: string;
+    @OneToMany(()=> AddCargoEntity, cargo => cargo.rh, {nullable: true, cascade: ['insert', 'update'], onDelete: "CASCADE"})
+    role: AddCargoEntity[];
 
     @Column()
     contractType: string;

@@ -15,6 +15,7 @@ import { StockModule } from './stock/stock.module';
 import { VtModule } from './vt/vt.module';
 import { AusenciaModule } from './ausencia/ausencia.module';
 import { ExamesModule } from './exames/exames.module';
+import { AddCargoModule } from './add-cargo/add-cargo.module';
 
 @Module({
   imports: [
@@ -50,7 +51,8 @@ import { ExamesModule } from './exames/exames.module';
     FaltasModule,
     VtModule,
     AusenciaModule,
-    ExamesModule
+    ExamesModule,
+    AddCargoModule
   ],
   controllers: [AppController],
   providers: [AppService],
