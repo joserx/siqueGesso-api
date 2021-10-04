@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AddCargoModule } from 'src/add-cargo/add-cargo.module';
 import { AusenciaModule } from 'src/ausencia/ausencia.module';
 import { RhEntity } from 'src/entities/rh.entity';
 import { ExamesModule } from 'src/exames/exames.module';
@@ -9,7 +10,7 @@ import { RhController } from './rh.controller';
 import { RhService } from './rh.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([RhEntity]), FaltasModule, AusenciaModule, ExamesModule, VtModule],
+  imports: [TypeOrmModule.forFeature([RhEntity]), FaltasModule, AusenciaModule, ExamesModule, VtModule, AddCargoModule],
   controllers: [RhController],
   providers: [RhService]
 })

@@ -14,9 +14,7 @@ export class FaltasService {
 
   async create(data) {
     let falta = await this.faltasRepository.create(data);
-    console.log(data)
-    await this.faltasRepository.save(falta);
-    console.log(falta)
+    await this.faltasRepository.save(falta)
   }
 
   async findAll() {
