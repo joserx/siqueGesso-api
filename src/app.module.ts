@@ -16,6 +16,7 @@ import { VtModule } from './vt/vt.module';
 import { AusenciaModule } from './ausencia/ausencia.module';
 import { ExamesModule } from './exames/exames.module';
 import { AddCargoModule } from './add-cargo/add-cargo.module';
+import { ExpedicaoModule } from './expedicao/expedicao.module';
 
 @Module({
   imports: [
@@ -52,7 +53,8 @@ import { AddCargoModule } from './add-cargo/add-cargo.module';
     VtModule,
     AusenciaModule,
     ExamesModule,
-    AddCargoModule
+    AddCargoModule,
+    ExpedicaoModule
   ],
   controllers: [AppController],
   providers: [AppService],

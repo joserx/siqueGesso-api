@@ -118,8 +118,8 @@ export class RhEntity {
     @Column()
     department: string;
 
-    @OneToMany(()=> AddCargoEntity, cargo => cargo.rh, {nullable: true, cascade: ['insert', 'update'], onDelete: "CASCADE"})
-    role: AddCargoEntity[];
+    @Column({nullable: true})
+    role: string;
 
     @Column()
     contractType: string;

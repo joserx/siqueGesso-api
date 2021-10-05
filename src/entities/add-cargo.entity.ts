@@ -10,7 +10,4 @@ export class AddCargoEntity {
     @Column({nullable: true})
     nome: string;
 
-    @ManyToMany(() => RhEntity, rh => rh.role, {cascade: true, onDelete: "CASCADE", nullable: true})
-    rh: RhEntity[]
-
 }
