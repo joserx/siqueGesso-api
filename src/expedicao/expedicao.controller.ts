@@ -16,6 +16,11 @@ export class ExpedicaoController {
   findAll() {
     return this.expedicaoService.findAll();
   }
+  
+  @Get('page/:number')
+  findByPage(@Param('number') no : number) {
+    return this.expedicaoService.findByPage(no);
+  }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
@@ -23,8 +28,8 @@ export class ExpedicaoController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateExpedicaoDto: UpdateExpedicaoDto) {
-    return this.expedicaoService.update(+id, updateExpedicaoDto);
+  update(@Param('id') id: string, @Body() data:any) {
+    return this.expedicaoService.update(+id, data);
   }
 
   @Delete(':id')
