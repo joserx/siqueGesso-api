@@ -1,5 +1,6 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Observable } from 'rxjs';
 import { AusenciaService } from 'src/ausencia/ausencia.service';
 import { RhEntity } from 'src/entities/rh.entity';
 import { ExamesService } from 'src/exames/exames.service';
