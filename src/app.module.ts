@@ -17,6 +17,9 @@ import { AusenciaModule } from './ausencia/ausencia.module';
 import { ExamesModule } from './exames/exames.module';
 import { AddCargoModule } from './add-cargo/add-cargo.module';
 import { ExpedicaoModule } from './expedicao/expedicao.module';
+import { PedidosModule } from './pedidos/pedidos.module';
+import { ItemPedidosModule } from './item-pedidos/item-pedidos.module';
+import { ProdutosModule } from './produtos/produtos.module';
 
 @Module({
   imports: [
@@ -54,7 +57,10 @@ import { ExpedicaoModule } from './expedicao/expedicao.module';
     AusenciaModule,
     ExamesModule,
     AddCargoModule,
-    ExpedicaoModule
+    ExpedicaoModule,
+    PedidosModule,
+    ItemPedidosModule,
+    ProdutosModule
   ],
   controllers: [AppController],
   providers: [AppService],
