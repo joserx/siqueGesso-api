@@ -12,13 +12,13 @@ export class Produto {
     @Column()
     categoria: string
 
-    @Column()
+    @Column({nullable: true})
     codigo: string
 
     @Column()
     nome: string
 
-    @Column()
+    @Column({nullable: true})
     obs: string
 
     @Column()
@@ -39,7 +39,7 @@ export class Produto {
     @Column()
     getinEan: string
     
-    @Column()
+    @Column({nullable: true})
     tributario: string
 
     @Column()
@@ -57,8 +57,8 @@ export class Produto {
     @Column()
     custoMedio: number
 
-    @Column()
-    precoMédio: number
+    @Column({nullable: true})
+    precoMedio: number
 
     @Column()
     margemLucro: number
@@ -66,7 +66,7 @@ export class Produto {
     @Column()
     comissao: string
 
-    @Column()
+    @Column({nullable: true})
     fornecedores: string
 
     @Column()
