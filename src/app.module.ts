@@ -20,6 +20,8 @@ import { ExpedicaoModule } from './expedicao/expedicao.module';
 import { PedidosModule } from './pedidos/pedidos.module';
 import { ItemPedidosModule } from './item-pedidos/item-pedidos.module';
 import { ProdutosModule } from './produtos/produtos.module';
+import { SolicitacaoModule } from './solicitacao/solicitacao.module';
+import { EmbarqueModule } from './embarque/embarque.module';
 
 @Module({
   imports: [
@@ -60,7 +62,9 @@ import { ProdutosModule } from './produtos/produtos.module';
     ExpedicaoModule,
     PedidosModule,
     ItemPedidosModule,
-    ProdutosModule
+    ProdutosModule,
+    SolicitacaoModule,
+    EmbarqueModule,
   ],
   controllers: [AppController],
   providers: [AppService],
