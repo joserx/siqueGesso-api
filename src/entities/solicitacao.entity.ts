@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { EmbarqueEntity } from "./embarque.entity";
 
 
@@ -25,6 +25,6 @@ export class SolicitacaoEntity {
     @Column()
     status: string
 
-    @OneToOne(() => EmbarqueEntity, {nullable: true})
-    embarque: EmbarqueEntity
+    @ManyToOne(()=> EmbarqueEntity, embarque => embarque.solicitacao, {cascade: ['insert', 'update'], onDelete: "CASCADE"})
+    embarque: EmbarqueEntity[]
 }

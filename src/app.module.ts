@@ -22,6 +22,7 @@ import { ItemPedidosModule } from './item-pedidos/item-pedidos.module';
 import { ProdutosModule } from './produtos/produtos.module';
 import { SolicitacaoModule } from './solicitacao/solicitacao.module';
 import { EmbarqueModule } from './embarque/embarque.module';
+import { AddTurnoModule } from './add-turno/add-turno.module';
 
 @Module({
   imports: [
@@ -65,6 +66,7 @@ import { EmbarqueModule } from './embarque/embarque.module';
     ProdutosModule,
     SolicitacaoModule,
     EmbarqueModule,
+    AddTurnoModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -42,6 +42,7 @@ export class FileController {
         let data : Partial<FileDto> = {};
         data.url = file.path;
         data.fileName = file.filename;
+        data.originalName = file.originalname
         return this.fileService.create(data)
     }
 

@@ -9,8 +9,11 @@ export class EmbarqueEntity {
     id: number
 
     @Column()
-    placa: string
+    sign: string
 
     @Column()
-    motorista: string
+    driver: string
+
+    @OneToMany(()=> SolicitacaoEntity, solicitacao => solicitacao.embarque, {cascade: true, onDelete: "CASCADE"})
+    solicitacao: SolicitacaoEntity[]
 }

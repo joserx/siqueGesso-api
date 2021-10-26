@@ -126,8 +126,8 @@ export class RhEntity {
     @Column()
     shift: string;
 
-    @Column()
-    paycheck: number;
+    @Column({type: "float", nullable: true})
+    paycheck: string;
 
     @Column('timestamp')
     admission: Date;
@@ -220,7 +220,7 @@ export class RhEntity {
     lastDeliveryJacket: Date;
 
     @Column({ nullable: true, type: "float" })
-    duplaFuncao: number;
+    duplaFuncao: string;
 
     @Column({ nullable: true })
     vale: string;
