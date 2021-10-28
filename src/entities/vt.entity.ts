@@ -15,7 +15,7 @@ export class VtEntity {
     @Column({nullable:true})
     vt: string;
 
-    @Column({nullable: true})
+    @Column({type: 'float', nullable: true})
     total: number;
 
     @Column({nullable: true})
