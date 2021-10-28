@@ -23,7 +23,7 @@ export class EmbarqueService {
   }
 
   async findOne(id: number) {
-    return await this.embarqueRepository.findOne(id);
+    return await this.embarqueRepository.findOne(id, {relations: ['solicitacao']});
   }
 
   update(id: number, updateEmbarqueDto: UpdateEmbarqueDto) {

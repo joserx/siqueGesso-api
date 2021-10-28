@@ -26,5 +26,6 @@ export class SolicitacaoEntity {
     status: string
 
     @ManyToOne(()=> EmbarqueEntity, embarque => embarque.solicitacao, {cascade: ['insert', 'update'], onDelete: "CASCADE"})
+    @JoinColumn()
     embarque: EmbarqueEntity[]
 }

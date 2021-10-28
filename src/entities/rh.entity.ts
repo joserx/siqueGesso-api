@@ -127,7 +127,7 @@ export class RhEntity {
     shift: string;
 
     @Column({type: "float", nullable: true})
-    paycheck: string;
+    paycheck: number;
 
     @Column('timestamp')
     admission: Date;
@@ -171,16 +171,16 @@ export class RhEntity {
     @Column('timestamp', { nullable: true })
     vacationDueDate: Date;
 
-    @Column({ nullable: true })
+    @Column({type: "float", nullable: true })
     conducaoIda: number;
 
-    @Column({ nullable: true })
+    @Column({type: "float", nullable: true })
     conducaoVolta: number;
 
     @Column({  nullable: true})
     linesNames: string;
 
-    @Column({ nullable: true })
+    @Column({type: "float", nullable: true })
     totalValue: number;
 
     @Column({ nullable: true })
@@ -220,7 +220,7 @@ export class RhEntity {
     lastDeliveryJacket: Date;
 
     @Column({ nullable: true, type: "float" })
-    duplaFuncao: string;
+    duplaFuncao: number;
 
     @Column({ nullable: true })
     vale: string;
