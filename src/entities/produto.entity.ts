@@ -1,7 +1,6 @@
 import { ProviderEntity } from "src/provider/entities/provider.entity";
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 
-// Os campos de valor coloquei em string pois o valor com float point não estava entrando na tabela
 @Entity()
 export class Produto {
     @PrimaryGeneratedColumn()

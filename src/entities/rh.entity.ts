@@ -1,5 +1,4 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, JoinTable, ManyToMany } from "typeorm";
-import { AddCargoEntity } from "./add-cargo.entity";
 import { AusenciaEntity } from "./ausencia.entity";
 import { ExameEntity } from "./exame.entity";
 import { FaltaEntity } from "./falta.entity";
