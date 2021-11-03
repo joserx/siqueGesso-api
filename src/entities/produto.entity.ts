@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { ProviderEntity } from "src/provider/entities/provider.entity";
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 
 // Os campos de valor coloquei em string pois o valor com float point não estava entrando na tabela
 @Entity()
@@ -13,13 +14,16 @@ export class Produto {
     categoria: string
 
     @Column()
-    codigo: string
+    sku: string
+
+    @Column()
+    ativo: boolean
 
     @Column()
     nome: string
 
-    @Column()
-    obs: string
+    @Column('text')
+    descricao: string
 
     @Column()
     unidade: string
@@ -38,9 +42,6 @@ export class Produto {
 
     @Column()
     getinEan: string
-    
-    @Column()
-    tributario: string
 
     @Column()
     min: number
@@ -58,7 +59,7 @@ export class Produto {
     custoMedio: number
 
     @Column()
-    precoMédio: number
+    precoMedio: number
 
     @Column()
     margemLucro: number
@@ -66,8 +67,8 @@ export class Produto {
     @Column()
     comissao: string
 
-    @Column()
-    fornecedores: string
+    @ManyToMany(() => ProviderEntity, provider => provider.produto, { cascade: ['insert', 'update'] })
+    fornecedores: ProviderEntity[]
 
     @Column()
     ncm: string
