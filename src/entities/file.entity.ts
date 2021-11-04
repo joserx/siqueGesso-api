@@ -12,6 +12,9 @@ export class FileEntity {
     @Column()
     fileName : string;
 
+    @Column({ nullable: true })
+    originalName: string
+
     @Column({ default : new Date()})
     date : Date;
     

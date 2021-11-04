@@ -1,0 +1,14 @@
+import { Module } from '@nestjs/common';
+import { StatusService } from './status.service';
+import { StatusController } from './status.controller';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { StatusEntity } from 'src/entities/status.entity';
+
+@Module({
+  controllers: [StatusController],
+  providers: [StatusService],
+  imports: [TypeOrmModule.forFeature([
+    StatusEntity
+  ])]
+})
+export class StatusModule {}

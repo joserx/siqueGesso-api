@@ -15,7 +15,7 @@ export class VtEntity {
     @Column({nullable:true})
     vt: string;
 
-    @Column({nullable: true})
+    @Column({type: 'float', nullable: true})
     total: number;
 
     @Column({nullable: true})
@@ -24,7 +24,7 @@ export class VtEntity {
     @Column({nullable:true})
     colabId: number
 
-    @Column({nullable: true})
+    @Column({type: 'float', nullable: true})
     originalTotal: number
 
     @ManyToOne(()=> RhEntity, rh => rh.vt, {cascade: true, onDelete: "CASCADE", nullable: true})

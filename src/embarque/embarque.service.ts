@@ -19,18 +19,18 @@ export class EmbarqueService {
   }
 
   async findAll() {
-    return await this.embarqueRepository.find();
+    return await this.embarqueRepository.find({relations: ['rh']});
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} embarque`;
+  async findOne(id: number) {
+    return await this.embarqueRepository.findOne(id, {relations: ['solicitacao']});
   }
 
   update(id: number, updateEmbarqueDto: UpdateEmbarqueDto) {
     return `This action updates a #${id} embarque`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} embarque`;
+  async remove(id: number) {
+    return await this.embarqueRepository.delete(id);
   }
 }

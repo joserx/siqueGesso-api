@@ -1,5 +1,7 @@
+import { EmbarqueService } from "src/embarque/embarque.service";
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, JoinTable, ManyToMany } from "typeorm";
 import { AusenciaEntity } from "./ausencia.entity";
+import { EmbarqueEntity } from "./embarque.entity";
 import { ExameEntity } from "./exame.entity";
 import { FaltaEntity } from "./falta.entity";
 import { FileEntity } from "./file.entity";
@@ -126,7 +128,7 @@ export class RhEntity {
     @Column()
     shift: string;
 
-    @Column()
+    @Column({type: "float", nullable: true})
     paycheck: number;
 
     @Column('timestamp')
@@ -171,16 +173,16 @@ export class RhEntity {
     @Column('timestamp', { nullable: true })
     vacationDueDate: Date;
 
-    @Column({ nullable: true })
+    @Column({type: "float", nullable: true })
     conducaoIda: number;
 
-    @Column({ nullable: true })
+    @Column({type: "float", nullable: true })
     conducaoVolta: number;
 
     @Column({  nullable: true})
     linesNames: string;
 
-    @Column({ nullable: true })
+    @Column({type: "float", nullable: true })
     totalValue: number;
 
     @Column({ nullable: true })
@@ -248,5 +250,14 @@ export class RhEntity {
 
     @OneToMany(()=>VtEntity, vt => vt.rh, { nullable: true, onDelete: "CASCADE", cascade:['insert', 'update']})
     vt: VtEntity[];
+
+    @Column({nullable: true})
+    categoriaCnh: string
+
+    @OneToMany(()=> EmbarqueEntity, embarque => embarque.rh,  { nullable: true, onDelete: "CASCADE", cascade:['insert', 'update']})
+    embarque: EmbarqueEntity[]
+
+    @Column('timestamp', {nullable: true})
+    ultimoEmbarque: Date
 
 }
