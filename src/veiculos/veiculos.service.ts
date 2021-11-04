@@ -18,16 +18,16 @@ export class VeiculosService {
     return await this.veiculoRepository.save(veiculo)
   }
 
-  findAll() {
-    return `This action returns all veiculos`;
+  async findAll() {
+    return await this.veiculoRepository.find()
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} veiculo`;
+  async findOne(id: number) {
+    return await this.veiculoRepository.findOne(id)
   }
 
-  update(id: number, updateVeiculoDto: UpdateVeiculoDto) {
-    return `This action updates a #${id} veiculo`;
+  async update(id: number, data: any) {
+    await this.veiculoRepository.update(id, data)
   }
 
   remove(id: number) {

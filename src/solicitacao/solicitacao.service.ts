@@ -19,7 +19,7 @@ export class SolicitacaoService {
   }
 
   async find() {
-    return await this.solicitacaoRepository.find();
+    return await this.solicitacaoRepository.find({relations: ['embarque']});
   }
 
   async findOne(id: number) {

@@ -24,6 +24,9 @@ import { SolicitacaoModule } from './solicitacao/solicitacao.module';
 import { EmbarqueModule } from './embarque/embarque.module';
 import { AddTurnoModule } from './add-turno/add-turno.module';
 import { VeiculosModule } from './veiculos/veiculos.module';
+import { StatusModule } from './status/status.module';
+import { BaixaModule } from './baixa/baixa.module';
+import { NconfromModule } from './nconfrom/nconfrom.module';
 
 @Module({
   imports: [
@@ -69,6 +72,9 @@ import { VeiculosModule } from './veiculos/veiculos.module';
     EmbarqueModule,
     AddTurnoModule,
     VeiculosModule,
+    StatusModule,
+    BaixaModule,
+    NconfromModule,
   ],
   controllers: [AppController],
   providers: [AppService],

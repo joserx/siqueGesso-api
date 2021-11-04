@@ -19,7 +19,7 @@ export class EmbarqueService {
   }
 
   async findAll() {
-    return await this.embarqueRepository.find();
+    return await this.embarqueRepository.find({relations: ['rh']});
   }
 
   async findOne(id: number) {
