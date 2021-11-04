@@ -15,6 +15,7 @@ export class VtService {
 
   async create(data) {
     let vt = this.vtRepository.create(data)
+    console.log(data)
     return await this.vtRepository.save(vt)
   }
 

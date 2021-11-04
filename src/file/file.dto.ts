@@ -3,4 +3,5 @@ export interface FileDto {
     url: string;
     fileName : string;
     date: Date;
+    originalName: string
 }
