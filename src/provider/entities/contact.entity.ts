@@ -8,33 +8,33 @@ export class Contact {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ nullable: false })
+    @Column({})
     name: string;
 
-    @Column({ nullable: false })
+    @Column({})
     whatsApp: string;
 
-    @Column({ nullable: false })
+    @Column({})
     tel_1: string;
 
-    @Column({ nullable: false})
+    @Column({})
     ramal_1: string;
 
-    @Column({ nullable: false })
+    @Column({})
     tel_2: string;
 
-    @Column({ nullable: false})
+    @Column({})
     ramal_2: string;
 
-    @Column({ nullable: false})
+    @Column({})
     email: string;
 
-    @Column({ nullable: false })
+    @Column({})
     email_nf: string;
 
     @Column({ nullable: true })
     site: string;
 
-    @ManyToOne(() => ProviderEntity, provider => provider.contacts, { nullable: false, cascade: true})
+    @ManyToOne(() => ProviderEntity, provider => provider.contacts, { cascade: true })
     provider: ProviderEntity
 }

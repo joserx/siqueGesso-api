@@ -14,17 +14,17 @@ export class RhEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column('boolean', { nullable: false, default: false })
+    @Column('boolean', { default: false })
     disabled: boolean;
 
-    @Column({ nullable: false, default: new Date() })
+    @Column({ default: new Date() })
     date: Date;
 
-    @ManyToOne(type => FileEntity, file => file.id, { nullable: true, cascade: true })
+    @ManyToOne(() => FileEntity, file => file.id, { nullable: true, cascade: true })
     @JoinTable()
     avatar: FileEntity;
 
-    @ManyToOne(type => UsersEntity, user => user.id, { nullable: false, cascade: true })
+    @ManyToOne(() => UsersEntity, user => user.id, { cascade: true })
     @JoinTable()
     createdBy: UsersEntity;
 
@@ -158,7 +158,7 @@ export class RhEntity {
     @Column()
     bankAccountNumber: string;
 
-    @Column({ nullable: false, default: 1 })
+    @Column({ default: 1 })
     status: number;
 
     @Column()

@@ -7,16 +7,16 @@ export class Stock {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ default: 0, nullable: false })
+    @Column({ default: 0 })
     min: number;
 
-    @Column({ default: 1000, nullable: false })
+    @Column({ default: 1000 })
     max: number;
 
-    @Column({ nullable: false })
+    @Column({})
     current: number;
 
-    @Column({ nullable: false })
+    @Column({})
     localizacao: string;
 
 }
