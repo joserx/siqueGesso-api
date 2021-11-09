@@ -1,5 +1,6 @@
 import { ItemPedidoEntity } from "src/entities/item-pedido.entity";
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Produto } from "./produto.entity";
 
 
 @Entity()
@@ -69,4 +70,7 @@ export class PedidoEntity {
     
     @Column()
     obs: string
+
+    @ManyToMany(() => Produto, produto => produto.pedido, { nullable: true, cascade: ['insert', 'update']})
+    produto: Produto[]
 }

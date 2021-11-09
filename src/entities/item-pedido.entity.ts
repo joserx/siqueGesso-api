@@ -24,6 +24,6 @@ export class ItemPedidoEntity {
     @Column()
     endereco: string
 
-    @ManyToOne(()=> PedidoEntity, pedido => pedido.item, {nullable: true, cascade: true})
+    @ManyToOne(()=> PedidoEntity, pedido => pedido.item, {nullable: true, cascade: true, onDelete:"CASCADE"})
     pedido: PedidoEntity[]
 }
