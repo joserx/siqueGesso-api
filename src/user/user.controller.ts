@@ -53,4 +53,9 @@ export class UserController {
         return this.authService.login(data);
     }
 
+    @Post("check")
+    checkPassword(@Body() data){
+        return this.authService.checkPassword(data)
+    }
+
 }

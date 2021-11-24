@@ -22,6 +22,11 @@ export class SolicitacaoController {
     return this.solicitacaoService.findOne(+id);
   }
 
+  @Get('page/:number')
+  findByPage(@Param('number') no : number) {
+    return this.solicitacaoService.findByPage(no);
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateSolicitacaoDto: UpdateSolicitacaoDto) {
     return this.solicitacaoService.update(+id, updateSolicitacaoDto);

@@ -34,6 +34,16 @@ export class AuthService {
         throw new HttpException({msg: "Usuário e/ou senha inválidos"}, HttpStatus.NOT_FOUND);
     }
 
+    async checkPassword(data: any){
+        const email = data.email;
+        const user = await this.usersRepository.findOne({ where: { email }, relations: ['avatar']});
+        if(await this.comparePassword(data.password, user.password)){
+            return true
+        }else{
+            return false
+        }
+    }
+
     async comparePassword(attempt: string, pwd: string) {
         return await bcrypt.compare(attempt, pwd);
     }

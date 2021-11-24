@@ -22,6 +22,13 @@ export class SolicitacaoService {
     return await this.solicitacaoRepository.find({relations: ['embarque']});
   }
 
+  async findByPage(no : number) {
+    return await this.solicitacaoRepository.createQueryBuilder()
+      .limit(6)
+      .offset(6*Number(no))
+      .getMany()
+  }
+
   async findOne(id: number) {
     return await this.solicitacaoRepository.findOne(id);
   }

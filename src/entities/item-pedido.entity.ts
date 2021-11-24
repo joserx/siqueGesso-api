@@ -10,7 +10,19 @@ export class ItemPedidoEntity {
     quantidade: number
 
     @Column()
+    codigo: number
+
+    @Column()
     desconto: string
+
+    @Column()
+    produto: string
+
+    @Column()
+    valorUnitario: number
+
+    @Column()
+    valorVenda: number
 
     @Column()
     tipoRetirada: string

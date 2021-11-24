@@ -41,4 +41,11 @@ export class ClientService {
         return await this.clientRepository.delete(id);
     }
 
+    async findByPage(no : number) {
+        return await this.clientRepository.createQueryBuilder()
+          .limit(6)
+          .offset(6*Number(no))
+          .getMany()
+      }
+
 }

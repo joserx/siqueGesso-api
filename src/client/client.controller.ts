@@ -39,4 +39,9 @@ export class ClientController {
         return this.clientService.delete(id);
     }
 
+    @Get('page/:number')
+    findByPage(@Param('number') no : number) {
+        return this.clientService.findByPage(no);
+    }
+
 }

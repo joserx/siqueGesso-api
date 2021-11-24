@@ -1,10 +1,9 @@
-import { ItemPedidoEntity } from "src/entities/item-pedido.entity";
-import { Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { ItemPedidoEntity } from "./item-pedido.entity";
 import { Produto } from "./produto.entity";
 
-
 @Entity()
-export class PedidoEntity {
+export class PedidoGeradoEntity {
     @PrimaryGeneratedColumn()
     id: number
 
