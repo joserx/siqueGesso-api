@@ -5,7 +5,7 @@ export class ExpedicaoEntity {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
+    @Column({ nullable: true })
     codigo: string
 
     @Column()

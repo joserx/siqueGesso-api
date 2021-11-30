@@ -23,12 +23,17 @@ export class PedidosController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePedidoDto: UpdatePedidoDto) {
-    return this.pedidosService.update(+id, updatePedidoDto);
+  update(@Param('id') id: number, @Body() data: any) {
+    return this.pedidosService.update(+id, data);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.pedidosService.remove(+id);
+  }
+
+  @Get('page/:number')
+  findByPage(@Param('number') no : number) {
+    return this.pedidosService.findByPage(no);
   }
 }

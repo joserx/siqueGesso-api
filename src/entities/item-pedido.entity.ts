@@ -9,8 +9,20 @@ export class ItemPedidoEntity {
     @Column({nullable: true})
     quantidade: number
 
+    @Column({ nullable: true })
+    codigo: number
+
     @Column()
     desconto: string
+
+    @Column({nullable: true})
+    produto: string
+
+    @Column({ nullable: true})
+    valorUnitario: number
+
+    @Column({nullable: true})
+    valorVenda: number
 
     @Column()
     tipoRetirada: string
@@ -24,6 +36,6 @@ export class ItemPedidoEntity {
     @Column()
     endereco: string
 
-    @ManyToOne(()=> PedidoEntity, pedido => pedido.item, {nullable: true, cascade: true})
+    @ManyToOne(()=> PedidoEntity, pedido => pedido.item, {nullable: true, cascade: true, onDelete:"CASCADE"})
     pedido: PedidoEntity[]
 }

@@ -1,5 +1,6 @@
 import { ProviderEntity } from "src/provider/entities/provider.entity";
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { PedidoEntity } from "./pedido.entity";
 
 @Entity()
 export class Produto {
@@ -66,7 +67,7 @@ export class Produto {
     @Column()
     comissao: string
 
-    @ManyToMany(() => ProviderEntity, provider => provider.produto, { cascade: ['insert', 'update'] })
+    @ManyToMany(() => ProviderEntity, provider => provider.produto, { cascade: ['insert', 'update'], onDelete:"CASCADE" })
     fornecedores: ProviderEntity[]
 
     @Column()
@@ -98,5 +99,9 @@ export class Produto {
 
     @Column()
     infoAdd: string
+
+    @ManyToMany(()=> PedidoEntity, pedido => pedido.produto, {nullable: true, cascade: true})
+    @JoinTable({name: "pedido_produto"})
+    pedido: PedidoEntity[]
 
 }
