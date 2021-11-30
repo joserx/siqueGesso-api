@@ -9,19 +9,19 @@ export class ItemPedidoEntity {
     @Column({nullable: true})
     quantidade: number
 
-    @Column()
+    @Column({ nullable: true })
     codigo: number
 
     @Column()
     desconto: string
 
-    @Column()
+    @Column({nullable: true})
     produto: string
 
-    @Column()
+    @Column({ nullable: true})
     valorUnitario: number
 
-    @Column()
+    @Column({nullable: true})
     valorVenda: number
 
     @Column()
