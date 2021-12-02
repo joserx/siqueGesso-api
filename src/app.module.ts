@@ -27,6 +27,7 @@ import { VeiculosModule } from './veiculos/veiculos.module';
 import { StatusModule } from './status/status.module';
 import { BaixaModule } from './baixa/baixa.module';
 import { NconfromModule } from './nconfrom/nconfrom.module';
+import { VendasDiretasModule } from './vendas-diretas/vendas-diretas.module';
 
 @Module({
   imports: [
@@ -75,6 +76,7 @@ import { NconfromModule } from './nconfrom/nconfrom.module';
     StatusModule,
     BaixaModule,
     NconfromModule,
+    VendasDiretasModule,
   ],
   controllers: [AppController],
   providers: [AppService],

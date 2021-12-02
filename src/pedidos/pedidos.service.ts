@@ -43,10 +43,16 @@ export class PedidosService {
     return await this.pedidoRepository.delete(id);
   }
 
-  async findByPage(no : number) {
-    return await this.pedidoRepository.createQueryBuilder()
+  async findByPage(no : any[]) {
+    let array: any[] = []
+    let where: string
+    for(let value of no){
+      array.push(Number(value))
+    }
+    return await this.pedidoRepository.createQueryBuilder("venda")
+      .where("venda.tipoVenda = :tipo", { tipo: no[1] })
       .limit(6)
-      .offset(6*Number(no))
+      .offset(6*Number(no[0]))
       .getMany()
   }
 }

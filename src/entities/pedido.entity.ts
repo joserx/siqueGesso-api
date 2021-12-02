@@ -23,7 +23,7 @@ export class PedidoEntity {
     @Column()
     condPagamento: string
 
-    @Column()
+    @Column({nullable: true})
     pagPersonalizado: string
 
     @Column()
@@ -32,20 +32,14 @@ export class PedidoEntity {
     @Column()
     tabPersonalizado: string
 
+    @Column({nullable: true})
+    tipoVenda: number
+
     @OneToMany(()=> ItemPedidoEntity, item => item.pedido, { nullable: true,onDelete: "CASCADE", cascade: ['insert', 'update']})
     item: ItemPedidoEntity[]
 
     @Column({nullable: true})
     descontoGeral: string
-
-    @Column()
-    tipoEntrega: string
-
-    @Column()
-    enderecoEntrega: string
-
-    @Column()
-    valorFreteEntrega: string
 
     @Column()
     meioPagamento: string
