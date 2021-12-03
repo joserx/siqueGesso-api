@@ -51,6 +51,8 @@ export class PedidosService {
     }
     return await this.pedidoRepository.createQueryBuilder("venda")
       .where("venda.tipoVenda = :tipo", { tipo: no[1] })
+      .orderBy("venda.created_at", "DESC")
+      .orderBy("venda.updated_at", "DESC")
       .limit(6)
       .offset(6*Number(no[0]))
       .getMany()
