@@ -30,12 +30,18 @@ export class ItemPedidoEntity {
     @Column({nullable: true})
     prevRetirada: Date
 
-    @Column()
+    @Column({nullable: true})
     valorFrete: string
 
-    @Column()
+    @Column({nullable: true})
     endereco: string
 
-    @ManyToOne(()=> PedidoEntity, pedido => pedido.item, {nullable: true, cascade: true, onDelete:"CASCADE"})
+    @Column({nullable: true})
+    enderecoLoja: string
+
+    @Column({nullable: true})
+    tipoEntrega: string
+
+    @ManyToOne(()=> PedidoEntity, pedido => pedido.item, {nullable: true, cascade: ['insert', 'update'], onDelete:"CASCADE"})
     pedido: PedidoEntity[]
 }
