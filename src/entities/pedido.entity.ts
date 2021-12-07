@@ -29,7 +29,7 @@ export class PedidoEntity {
     @Column()
     tabPreco: string
 
-    @Column()
+    @Column({nullable: true})
     tabPersonalizado: string
 
     @Column({nullable: true})
@@ -44,13 +44,13 @@ export class PedidoEntity {
     @Column()
     meioPagamento: string
 
-    @Column()
+    @Column({nullable: true})
     dias: number
 
     @Column()
     dataVencimento: Date
 
-    @Column()
+    @Column({nullable: true})
     status: string
 
     @Column()
@@ -62,10 +62,8 @@ export class PedidoEntity {
     @Column()
     obs: string
 
-    @Column()
+    @Column({nullable: true})
     total: string
-
-  
 
     @ManyToMany(() => Produto, produto => produto.pedido, { nullable: true, cascade: ['insert', 'update']})
     produto: Produto[]
