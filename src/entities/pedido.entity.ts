@@ -68,6 +68,44 @@ export class PedidoEntity {
     @ManyToMany(() => Produto, produto => produto.pedido, { nullable: true, cascade: ['insert', 'update']})
     produto: Produto[]
 
+    /* Caso seja um pedido de venda direta */
+
+    @Column({nullable: true})
+    cnpj: string
+
+    @Column({nullable: true})
+    cep: string
+
+    @Column({nullable: true})
+    endereço: string
+
+    @Column({nullable: true})
+    numero: string
+
+    @Column({nullable: true})
+    bairro: string
+
+    @Column({nullable: true})
+    cidade: string
+
+    @Column({nullable: true})
+    complemento: string
+
+    @Column({nullable: true})
+    motorista: string
+
+    @Column({nullable: true})
+    placa: string
+
+    @Column({nullable: true})
+    valorFreteEntrega: number
+
+    @Column({nullable: true})
+    aguradandoPagamento: string
+
+    @Column({nullable: true})
+    previsaoEntrega: Date
+
     /* Created_at e updated_at */
 
     @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", nullable: true })
