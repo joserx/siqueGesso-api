@@ -1,55 +1,55 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class ExpedicaoEntity {
-    @PrimaryGeneratedColumn()
-    id: number
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column({ nullable: true })
-    codigo: string
+  @Column({ nullable: true })
+  codigo: string;
 
-    @Column()
-    unidade: string
+  @Column()
+  unidade: string;
 
-    @Column()
-    status: string
+  @Column({ nullable: true })
+  status: string;
 
-    @Column()
-    respSeparacao: string
+  @Column()
+  respSeparacao: string;
 
-    @Column()
-    respDespacho: string
+  @Column()
+  respDespacho: string;
 
-    @Column("timestamp",{nullable: true})
-    emissao: Date
+  @Column('timestamp', { nullable: true })
+  emissao: Date;
 
-    @Column()
-    cliente: string
+  @Column()
+  cliente: string;
 
-    @Column()
-    motorista: string
+  @Column()
+  motorista: string;
 
-    @Column()
-    placa: string
+  @Column()
+  placa: string;
 
-    @Column()
-    peso: string
+  @Column()
+  peso: string;
 
-    @Column()
-    observacoes: string
+  @Column()
+  observacoes: string;
 
-    @Column()
-    loja: string
+  @Column()
+  loja: string;
 
-    @Column()
-    vendedor: string
+  @Column()
+  vendedor: string;
 
-    @Column()
-    pedido: string
+  @Column()
+  pedido: string;
 
-    @Column()
-    transportadora: string  
-    
-    @Column({nullable: true})
-    nPedido: number
+  @Column()
+  transportadora: string;
+
+  @Column({ nullable: true })
+  nPedido: number;
 }
