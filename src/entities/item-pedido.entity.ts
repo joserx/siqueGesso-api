@@ -1,5 +1,5 @@
 import { PedidoEntity } from "src/entities/pedido.entity";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class ItemPedidoEntity {
@@ -44,6 +44,9 @@ export class ItemPedidoEntity {
 
     @Column({nullable: true})
     total: string
+
+    @Column({nullable: true})
+    estoque: number
 
     @ManyToOne(()=> PedidoEntity, pedido => pedido.item, {nullable: true, cascade: ['insert', 'update'], onDelete:"CASCADE"})
     pedido: PedidoEntity[]

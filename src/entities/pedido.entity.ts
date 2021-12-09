@@ -77,7 +77,7 @@ export class PedidoEntity {
     cep: string
 
     @Column({nullable: true})
-    endereço: string
+    endereco: string
 
     @Column({nullable: true})
     numero: string

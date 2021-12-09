@@ -35,7 +35,7 @@ export class PedidosService {
   }
 
   async update(id: number, data: any) {
-    let array = await this.pedidoRepository.findOne(id, {relations: ['item', 'produto']})
+    let array = await this.pedidoRepository.findOne(id)
     return await this.pedidoRepository.save({id, ...array, ...data})
   }
 

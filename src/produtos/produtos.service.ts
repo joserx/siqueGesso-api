@@ -32,8 +32,8 @@ export class ProdutosService {
 
   get teste() { return 'teste' }
 
-  update(id: number, updateProdutoDto: UpdateProdutoDto) {
-    return `This action updates a #${id} produto`;
+  async update(id: number, data: any) {
+    await console.log('teste')
   }
 
   remove(id: number) {
