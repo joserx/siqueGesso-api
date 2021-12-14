@@ -21,6 +21,9 @@ export class PedidoEntity {
     cliente: string
 
     @Column()
+    clienteId: number
+
+    @Column()
     condPagamento: string
 
     @Column({nullable: true})

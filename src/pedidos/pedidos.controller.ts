@@ -32,11 +32,13 @@ export class PedidosController {
     return this.pedidosService.remove(+id);
   }
 
-  // trocar para o body
+  @Get('find/:id')
+  findThis(@Param('id') id: number){
+    return this.pedidosService.findThis(id)
+  }
 
   @Get('page/:number')
   findByPage(@Param('number') no : any) {
-    // console.log(type)
     return this.pedidosService.findByPage(no);
   }
 }

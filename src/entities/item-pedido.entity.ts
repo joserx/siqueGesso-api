@@ -43,7 +43,7 @@ export class ItemPedidoEntity {
     tipoEntrega: string
 
     @Column({nullable: true})
-    total: string
+    total: number
 
     @Column({nullable: true})
     estoque: number

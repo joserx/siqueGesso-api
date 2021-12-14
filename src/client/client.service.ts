@@ -16,7 +16,7 @@ export class ClientService {
     }
 
     async findOne(id : number) {
-        return await this.clientRepository.findOne(id, { relations: ['addresses'] });
+        return await this.clientRepository.findOne(id, { relations: ['addresses', 'tabela'] });
     }
 
     async create(data : any) {
@@ -42,7 +42,9 @@ export class ClientService {
     }
 
     async findByPage(no : number) {
-        return await this.clientRepository.createQueryBuilder()
+        return await this.clientRepository.createQueryBuilder("cliente")
+          .orderBy("cliente.created_at", "DESC")
+          .orderBy("cliente.updated_at", "DESC")
           .limit(6)
           .offset(6*Number(no))
           .getMany()
