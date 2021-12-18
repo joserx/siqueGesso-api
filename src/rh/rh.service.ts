@@ -24,8 +24,8 @@ export class RhService {
     async findByPage(no){
         return await this.rhRepository.createQueryBuilder('colab')
             .orderBy("colab.name", "ASC")
-            .limit(6)
-            .offset(6*Number(no))
+            .limit(10)
+            .offset(10*Number(no))
             .getMany()
     }
 

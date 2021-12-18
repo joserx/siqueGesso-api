@@ -1,5 +1,6 @@
 import { Column, Entity, JoinTable, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { FileEntity } from "./file.entity";
+import { UsersEntity } from "./user.entity";
 @Entity()
 export class FilialEntity{
     @PrimaryGeneratedColumn()

@@ -33,7 +33,11 @@ export class ProdutosService {
   get teste() { return 'teste' }
 
   async update(id: number, data: any) {
-    await console.log('teste')
+    await this.produtoRepository.update(id, data)
+  }
+
+  async findOne(id: number){
+    return await this.produtoRepository.findOne(id)
   }
 
   remove(id: number) {

@@ -29,6 +29,12 @@ export class UsersEntity{
     @Column('boolean', { nullable : false , default : false})
     disabled : boolean;
 
+    @Column({nullable: true})
+    loja: string
+
+    @Column({nullable: true})
+    lojaId: number
+
     @ManyToOne(type => FileEntity, file => file.id, {nullable : true})
     @JoinTable()
     avatar : FileEntity;

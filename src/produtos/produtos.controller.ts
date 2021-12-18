@@ -18,6 +18,12 @@ export class ProdutosController {
     return this.produtosService.findAll();
   }
 
+  @Get(':id')
+  @UseGuards(AuthGuard('jwt'))
+  findOne(@Param('id') id: number){
+    return this.produtosService.findOne(id)
+  }
+
   @Patch(':id')
   @UseGuards(AuthGuard('jwt'))
   update(@Param('id') id, @Body() updateProdutoDto) {
