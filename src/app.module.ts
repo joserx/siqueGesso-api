@@ -29,6 +29,7 @@ import { BaixaModule } from './baixa/baixa.module';
 import { NconfromModule } from './nconfrom/nconfrom.module';
 import { VendasDiretasModule } from './vendas-diretas/vendas-diretas.module';
 import { TabelaModule } from './tabela/tabela.module';
+import { PedidoCompraModule } from './pedido-compra/pedido-compra.module';
 
 @Module({
   imports: [
@@ -79,6 +80,7 @@ import { TabelaModule } from './tabela/tabela.module';
     NconfromModule,
     VendasDiretasModule,
     TabelaModule,
+    PedidoCompraModule,
   ],
   controllers: [AppController],
   providers: [AppService],

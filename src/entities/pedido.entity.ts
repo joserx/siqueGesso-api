@@ -1,75 +1,94 @@
-import { ItemPedidoEntity } from "src/entities/item-pedido.entity";
-import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { Produto } from "./produto.entity";
-
+import { ItemPedidoEntity } from 'src/entities/item-pedido.entity';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+import { Produto } from './produto.entity';
 
 @Entity()
 export class PedidoEntity {
-    @PrimaryGeneratedColumn()
-    id: number
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column("timestamp")
-    data: Date
+  @Column('timestamp')
+  data: Date;
 
-    @Column()
-    loja: string
+  @Column()
+  loja: string;
 
-    @Column()
-    vendedor: string
+  @Column()
+  vendedor: string;
 
-    @Column()
-    cliente: string
+  @Column()
+  cliente: string;
 
-    @Column()
-    clienteId: number
+  @Column()
+  condPagamento: string;
+  
+  @Column()
+  clienteId: number
 
-    @Column()
-    condPagamento: string
+  @Column()
+  condPagamento: string
 
-    @Column({nullable: true})
-    pagPersonalizado: string
+  @Column({ nullable: true })
+  pagPersonalizado: string;
 
-    @Column()
-    tabPreco: string
 
-    @Column({nullable: true})
-    tabPersonalizado: string
+  @Column()
+  tabPreco: string;
 
-    @Column({nullable: true})
-    tipoVenda: number
+  @Column({ nullable: true })
+  tabPersonalizado: string;
 
-    @OneToMany(()=> ItemPedidoEntity, item => item.pedido, { onDelete: "CASCADE", cascade: true, nullable: true})
-    item: ItemPedidoEntity[]
+  @Column({ nullable: true })
+  tipoVenda: number;
 
-    @Column({nullable: true})
-    descontoGeral: string
+  @OneToMany(() => ItemPedidoEntity, (item) => item.pedido, {
+    onDelete: 'CASCADE',
+    cascade: true,
+    nullable: true,
+  })
+  item: ItemPedidoEntity[];
 
-    @Column()
-    meioPagamento: string
+  @Column({ nullable: true })
+  descontoGeral: string;
 
-    @Column({nullable: true})
-    dias: number
+  @Column()
+  meioPagamento: string;
 
-    @Column()
-    dataVencimento: Date
+  @Column({ nullable: true })
+  dias: number;
 
-    @Column({nullable: true})
-    status: string
+  @Column()
+  dataVencimento: Date;
 
-    @Column()
-    linkBoleto: string
+  @Column({ nullable: true })
+  status: string;
 
-    @Column()
-    linkNf: string
-    
-    @Column()
-    obs: string
+  @Column()
+  linkBoleto: string;
 
-    @Column({nullable: true})
-    total: string
+  @Column()
+  linkNf: string;
 
-    @ManyToMany(() => Produto, produto => produto.pedido, { nullable: true, cascade: ['insert', 'update']})
-    produto: Produto[]
+  @Column()
+  obs: string;
+
+  @Column()
+  total: string;
+
+  @ManyToMany(() => Produto, (produto) => produto.pedido, {
+    nullable: true,
+    cascade: ['insert', 'update'],
+  })
+  produto: Produto[];
 
     /* Caso seja um pedido de venda direta */
 
@@ -111,9 +130,18 @@ export class PedidoEntity {
 
     /* Created_at e updated_at */
 
-    @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", nullable: true })
-    public created_at: Date;
+  @CreateDateColumn({
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP(6)',
+    nullable: true,
+  })
+  public created_at: Date;
 
-    @UpdateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)", nullable: true })
-    public updated_at: Date;
+  @UpdateDateColumn({
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP(6)',
+    onUpdate: 'CURRENT_TIMESTAMP(6)',
+    nullable: true,
+  })
+  public updated_at: Date;
 }
