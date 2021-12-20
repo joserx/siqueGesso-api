@@ -1,5 +1,5 @@
-import { PedidoEntity } from 'src/entities/pedido.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { PedidoEntity } from "src/entities/pedido.entity";
+import { Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class ItemPedidoEntity {
@@ -39,8 +39,15 @@ export class ItemPedidoEntity {
   @Column({ nullable: true })
   enderecoLoja: string;
 
+  @Column({nullable: true})
+  total: number
+
+  @Column({nullable: true})
+  estoque: number
+    
   @Column({ nullable: true })
   tipoEntrega: string;
+
 
   @ManyToOne(() => PedidoEntity, (pedido) => pedido.item, {
     nullable: true,

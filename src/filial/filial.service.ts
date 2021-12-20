@@ -25,15 +25,19 @@ export class FilialService {
     return await this.filialRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} filial`;
+  async findOne(id: number) {
+    return await this.filialRepository.findOne(id, {relations: ['banner']});
   }
 
-  update(id: number, updateFilialDto: UpdateFilialDto) {
-    return `This action updates a #${id} filial`;
+  async update(id: number, data: any) {
+    let filial = await this.filialRepository.findOne(id, {relations: ['banner']})
+    if(filial){
+      await this.filialRepository.save({id, ...filial, ...data})
+      return await this.filialRepository.findOne(id, {relations: ['banner']})
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} filial`;
+  async remove(id: number) {
+    return await this.filialRepository.delete(id);
   }
 }

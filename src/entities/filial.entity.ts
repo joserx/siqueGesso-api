@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { FileEntity } from "./file.entity";
+import { UsersEntity } from "./user.entity";
 @Entity()
 export class FilialEntity{
     @PrimaryGeneratedColumn()
@@ -6,4 +8,29 @@ export class FilialEntity{
 
     @Column({ nullable : true })
     nome: string;
+
+    @Column({ nullable: true })
+    cnpj: string;
+
+    @Column({ nullable: true })
+    logradouro: string
+
+    @Column({ nullable: true })
+    cep: string;
+
+    @Column({ nullable: true })
+    numero: number;
+
+    @Column({ nullable: true })
+    cidade: string;
+
+    @Column({ nullable: true })
+    pais: string;
+
+    @Column({ nullable: true })
+    capacidade: number;
+
+    @ManyToOne(() => FileEntity, file => file.id, { nullable: true, cascade: true })
+    @JoinTable()
+    banner: FileEntity;
 }

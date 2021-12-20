@@ -24,6 +24,11 @@ export class RhController {
         return this.rhService.findOne(id);
     }
 
+    @Get('page/:number')
+    findByPage(@Param('number') no : number){
+        return this.rhService.findByPage(no)
+    }
+
     @Post()
     create(@Body() data : Partial<RhDto>) {
         return this.rhService.create(data);

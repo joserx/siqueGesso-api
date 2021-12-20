@@ -35,7 +35,7 @@ export class PedidosService {
   }
 
   async update(id: number, data: any) {
-    let array = await this.pedidoRepository.findOne(id, {relations: ['item', 'produto']})
+    let array = await this.pedidoRepository.findOne(id)
     return await this.pedidoRepository.save({id, ...array, ...data})
   }
 
@@ -45,7 +45,6 @@ export class PedidosService {
 
   async findByPage(no : any[]) {
     let array: any[] = []
-    let where: string
     for(let value of no){
       array.push(Number(value))
     }
@@ -55,6 +54,15 @@ export class PedidosService {
       .orderBy("venda.updated_at", "DESC")
       .limit(6)
       .offset(6*Number(no[0]))
+      .getMany()
+  }
+
+  async findThis(id: number){
+    return await this.pedidoRepository.createQueryBuilder("venda")
+      .where("venda.clienteId = :client", {client: id})
+      .leftJoinAndSelect('venda.item', 'item')
+      .orderBy("venda.created_at", "DESC")
+      .orderBy("venda.updated_at", "DESC")
       .getMany()
   }
 }

@@ -1,5 +1,7 @@
-import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { AddressEntity } from "./address.entity";
+import { PedidoEntity } from "./pedido.entity";
+import { Tabela } from "./tabela.entity";
 
 @Entity()
 export class ClientEntity {
@@ -61,8 +63,58 @@ export class ClientEntity {
     @Column('boolean', { default: false, nullable : false  })
     disabled : boolean;
 
+    @ManyToMany(()=> Tabela, {cascade: ['insert', 'update'], nullable: true})
+    @JoinTable()
+    tabela: Tabela[]
+
+    @Column({nullable: true})
+    debito: string
+
+    @Column({nullable: true})
+    creditoAvista: string
+
+    @Column({nullable: true})
+    creditoAprazo: string
+
+    @Column({nullable: true})
+    boletoAvista: string
+
+    @Column({nullable: true})
+    boletoDdl: string
+
+    @Column({nullable: true})
+    obs: string
+
+    @Column({nullable: true})
+    restricao: string
+
+    @Column({nullable: true})
+    validade: string
+
+    @Column({nullable: true})
+    limiteCompra: number
+
+    @Column({nullable: true})
+    descontoMax: string
+
+    @Column({nullable: true})
+    obsCredito: string
+
+    @Column({nullable: true})
+    codigoVendedor: number
+
+    @Column({nullable: true})
+    vendedor: string
+
     @ManyToMany(() => AddressEntity, address => address.id, {cascade : true})
     @JoinTable()
     addresses : AddressEntity[];
+
+    /* Created_at e updated_at */
+    @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", nullable: true })
+    public created_at: Date;
+
+    @UpdateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)", nullable: true })
+    public updated_at: Date;
 
 }

@@ -18,7 +18,15 @@ export class RhService {
     ) { }
 
     async find() {
-        return await this.rhRepository.find();
+        return await this.rhRepository.find()
+    }
+
+    async findByPage(no){
+        return await this.rhRepository.createQueryBuilder('colab')
+            .orderBy("colab.name", "ASC")
+            .limit(10)
+            .offset(10*Number(no))
+            .getMany()
     }
 
     async findOne(id: number) {

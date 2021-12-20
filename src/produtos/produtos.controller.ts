@@ -1,13 +1,5 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  UseGuards,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Put } from '@nestjs/common';
+
 import { AuthGuard } from '@nestjs/passport';
 import { UpdateProdutoDto } from './dto/update-produto.dto';
 import { ProdutosService } from './produtos.service';
@@ -26,6 +18,12 @@ export class ProdutosController {
   @UseGuards(AuthGuard('jwt'))
   findAll() {
     return this.produtosService.findAll();
+  }
+
+  @Get(':id')
+  @UseGuards(AuthGuard('jwt'))
+  findOne(@Param('id') id: number){
+    return this.produtosService.findOne(id)
   }
 
   @Patch(':id')

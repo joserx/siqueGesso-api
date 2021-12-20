@@ -34,6 +34,11 @@ export class ProdutosService {
   }
 
   async update(id: number, data: any) {
+    await this.produtoRepository.update(id, data)
+  }
+
+  async findOne(id: number){
+    return await this.produtoRepository.findOne(id)
     await this.produtoRepository.update(id, data);
   }
 

@@ -28,6 +28,7 @@ import { StatusModule } from './status/status.module';
 import { BaixaModule } from './baixa/baixa.module';
 import { NconfromModule } from './nconfrom/nconfrom.module';
 import { VendasDiretasModule } from './vendas-diretas/vendas-diretas.module';
+import { TabelaModule } from './tabela/tabela.module';
 import { PedidoCompraModule } from './pedido-compra/pedido-compra.module';
 
 @Module({
@@ -78,6 +79,7 @@ import { PedidoCompraModule } from './pedido-compra/pedido-compra.module';
     BaixaModule,
     NconfromModule,
     VendasDiretasModule,
+    TabelaModule,
     PedidoCompraModule,
   ],
   controllers: [AppController],
