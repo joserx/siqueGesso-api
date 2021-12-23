@@ -29,17 +29,13 @@ export class ProdutosService {
     return await this.produtoRepository.find();
   }
 
-  get teste() {
-    return 'teste';
-  }
-
   async update(id: number, data: any) {
-    await this.produtoRepository.update(id, data)
+    await this.produtoRepository.update(id, data);
   }
 
-  async findOne(id: number){
-    return await this.produtoRepository.findOne(id)
-    await this.produtoRepository.update(id, data);
+  async findOne(id: number) {
+    return await this.produtoRepository.findOne(id);
+    // await this.produtoRepository.update(id, data);
   }
 
   async remove(id: number) {

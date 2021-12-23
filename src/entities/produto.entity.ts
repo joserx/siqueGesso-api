@@ -82,6 +82,9 @@ export class Produto {
   fornecedores: ProviderEntity[];
 
   @Column({ nullable: true })
+  origem: string;
+
+  @Column({ nullable: true })
   ncm: string;
 
   @Column({ nullable: true })
@@ -117,4 +120,7 @@ export class Produto {
   })
   @JoinTable({ name: 'pedido_produto' })
   pedido: PedidoEntity[];
+
+  @DeleteDateColumn()
+  deleted_at: Date;
 }

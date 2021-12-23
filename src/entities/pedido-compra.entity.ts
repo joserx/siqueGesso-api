@@ -11,54 +11,54 @@ export class Produto {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ nullable: true })
   data: string;
 
-  @Column()
+  @Column({ nullable: true })
   fornecedor: string;
 
-  @Column()
+  @Column({ nullable: true })
   razaoSocial: string;
 
-  @Column()
+  @Column({ nullable: true })
   cnpj: number;
 
-  @Column()
+  @Column({ nullable: true })
   cep: number;
 
-  @Column()
+  @Column({ nullable: true })
   endereco: string;
 
-  @Column()
+  @Column({ nullable: true })
   complemento: string;
 
   //   @Column()
   //   itens: string;
 
-  @Column()
+  @Column({ nullable: true })
   subtotal: number;
 
-  @Column()
+  @Column({ nullable: true })
   desconto: number;
 
-  @Column()
+  @Column({ nullable: true })
   frete: number;
 
-  @Column()
+  @Column({ nullable: true })
   encargos: string;
 
-  @Column()
+  @Column({ nullable: true })
   valorTotal: number;
 
-  @Column()
+  @Column({ nullable: true })
   condPagamento: number;
 
-  @Column()
+  @Column({ nullable: true })
   dataVenc: number;
 
-  @Column()
+  @Column({ nullable: true })
   meioPag: number;
 
-  @Column()
+  @Column({ nullable: true })
   obs: string;
 }

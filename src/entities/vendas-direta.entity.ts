@@ -1,19 +1,19 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class VendasDireta {
-    @PrimaryGeneratedColumn()
-    id: Number
+  @PrimaryGeneratedColumn()
+  id: Number;
 
-    @Column('timestamp')
-    data: Date
+  @Column('timestamp', { nullable: true })
+  data: Date;
 
-    @Column()
-    loja: string
+  @Column()
+  loja: string;
 
-    @Column()
-    vendedor: string
+  @Column()
+  vendedor: string;
 
-    @Column()
-    cliente: string
+  @Column()
+  cliente: string;
 }
