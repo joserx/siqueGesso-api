@@ -1,4 +1,14 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Put } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  UseGuards,
+  Put,
+} from '@nestjs/common';
 
 import { AuthGuard } from '@nestjs/passport';
 import { UpdateProdutoDto } from './dto/update-produto.dto';
@@ -22,19 +32,19 @@ export class ProdutosController {
 
   @Get(':id')
   @UseGuards(AuthGuard('jwt'))
-  findOne(@Param('id') id: number){
-    return this.produtosService.findOne(id)
+  findOne(@Param('id') id: number) {
+    return this.produtosService.findOne(id);
+  }
+
+  @Patch('/delete')
+  @UseGuards(AuthGuard('jwt'))
+  remove(@Body() produto: any) {
+    return this.produtosService.remove(produto);
   }
 
   @Patch(':id')
   @UseGuards(AuthGuard('jwt'))
-  update(@Param('id') id, @Body() updateProdutoDto: UpdateProdutoDto) {
+  update(@Param('id') id, @Body() updateProdutoDto: any) {
     return this.produtosService.update(+id, updateProdutoDto);
-  }
-
-  @Delete(':id')
-  @UseGuards(AuthGuard('jwt'))
-  remove(@Param('id') id: string) {
-    return this.produtosService.remove(+id);
   }
 }

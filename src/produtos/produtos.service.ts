@@ -26,7 +26,7 @@ export class ProdutosService {
   }
 
   async findAll() {
-    return await this.produtoRepository.find();
+    return await this.produtoRepository.find({ where: { deleted: false } });
   }
 
   async update(id: number, data: any) {
@@ -38,9 +38,11 @@ export class ProdutosService {
     // await this.produtoRepository.update(id, data);
   }
 
-  async remove(id: number) {
-    return await this.produtoRepository.softDelete(id).catch((e) => {
-      throw new HttpException(e, HttpStatus.INTERNAL_SERVER_ERROR);
-    });
+  async remove(produto: any) {
+    // let produtoEncontrado = await this.produtoRepository.findOne(produto.id);
+    // produtoEncontrado.deleted = produto.deleted;
+    // return await this.produtoRepository.save(produtoEncontrado).catch((e) => {
+    //   throw new HttpException(e, HttpStatus.INTERNAL_SERVER_ERROR);
+    // });
   }
 }

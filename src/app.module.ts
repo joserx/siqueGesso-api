@@ -43,12 +43,8 @@ import { SuprimentosModule } from './suprimentos/suprimentos.module';
       database: 'sique_gesso',
       synchronize: true,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      migrations: [
-        'src/migration/**/*.ts',
-      ],
-      subscribers: [
-        'src/subscriber/**/*.ts',
-      ],
+      migrations: ['src/migration/**/*.ts'],
+      subscribers: ['src/subscriber/**/*.ts'],
       cli: {
         entitiesDir: 'src/entity',
         migrationsDir: 'src/migration',
