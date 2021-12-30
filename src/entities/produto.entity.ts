@@ -124,6 +124,6 @@ export class Produto {
   @DeleteDateColumn()
   deleted_at: Date;
 
-  // @Column({ nullable: true, default: false })
-  // deleted: boolean;
+  @Column({ nullable: true, default: false })
+  deleted: boolean;
 }
