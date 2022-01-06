@@ -31,6 +31,7 @@ import { VendasDiretasModule } from './vendas-diretas/vendas-diretas.module';
 import { TabelaModule } from './tabela/tabela.module';
 import { PedidoCompraModule } from './pedido-compra/pedido-compra.module';
 import { SuprimentosModule } from './suprimentos/suprimentos.module';
+import { ItensModule } from './itens/itens.module';
 
 @Module({
   imports: [
@@ -79,6 +80,7 @@ import { SuprimentosModule } from './suprimentos/suprimentos.module';
     TabelaModule,
     PedidoCompraModule,
     SuprimentosModule,
+    ItensModule,
   ],
   controllers: [AppController],
   providers: [AppService],

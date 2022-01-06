@@ -1,11 +1,10 @@
-import { ProviderEntity } from 'src/provider/entities/provider.entity';
+import { ProviderEntity } from 'src/entities/provider.entity';
 import {
   Column,
   DeleteDateColumn,
   Entity,
   JoinTable,
   ManyToMany,
-  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { PedidoEntity } from './pedido.entity';
@@ -15,110 +14,106 @@ export class Produto {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ nullable: true })
+  @Column()
   destinacao: string;
 
-  @Column({ nullable: true })
+  @Column()
   categoria: string;
 
-  @Column({ nullable: true })
+  @Column()
   sku: string;
 
-  @Column({ nullable: true })
+  @Column()
   ativo: boolean;
 
-  @Column({ nullable: true })
+  @Column()
   nome: string;
 
-  @Column({ nullable: true })
+  @Column()
   descricao: string;
 
-  @Column({ nullable: true })
+  @Column()
   unidade: string;
 
-  @Column({ nullable: true })
+  @Column()
   largura: number;
 
-  @Column({ nullable: true })
+  @Column()
   altura: number;
 
-  @Column({ nullable: true })
+  @Column()
   peso: number;
 
-  @Column({ nullable: true })
+  @Column()
   itens: number;
 
-  @Column({ nullable: true })
+  @Column()
   getinEan: string;
 
-  @Column({ nullable: true })
+  @Column()
   min: number;
 
-  @Column({ nullable: true })
+  @Column()
   max: number;
 
-  @Column({ nullable: true })
+  @Column()
   atual: number;
 
-  @Column({ nullable: true })
+  @Column()
   localizacao: string;
 
-  @Column({ nullable: true })
+  @Column()
   custoMedio: number;
 
-  @Column({ nullable: true })
+  @Column()
   precoMedio: number;
 
-  @Column({ nullable: true })
+  @Column()
   margemLucro: number;
 
-  @Column({ nullable: true })
+  @Column()
   comissao: string;
 
-  @ManyToMany(() => ProviderEntity, (provider) => provider.produto, {
-    cascade: ['insert', 'update'],
-    onDelete: 'CASCADE',
-  })
+  @ManyToMany(() => ProviderEntity, (provider) => provider.produto)
   fornecedores: ProviderEntity[];
 
-  @Column({ nullable: true })
+  @Column()
   origem: string;
 
-  @Column({ nullable: true })
+  @Column()
   ncm: string;
 
-  @Column({ nullable: true })
+  @Column()
   cest: string;
 
-  @Column({ nullable: true })
+  @Column()
   tributos: string;
 
-  @Column({ nullable: true })
+  @Column()
   valorBaseIcms: string;
 
-  @Column({ nullable: true })
+  @Column()
   valorIcms: string;
 
-  @Column({ nullable: true })
+  @Column()
   valorIcmsProprio: string;
 
-  @Column({ nullable: true })
+  @Column()
   codigoTipi: string;
 
-  @Column({ nullable: true })
+  @Column()
   valorPis: string;
 
-  @Column({ nullable: true })
+  @Column()
   valorConfins: string;
 
-  @Column({ nullable: true })
+  @Column()
   infoAdd: string;
 
   @ManyToMany(() => PedidoEntity, (pedido) => pedido.produto, {
     nullable: true,
     cascade: true,
   })
-  @JoinTable({ name: 'pedido_produto' })
   pedido: PedidoEntity[];
 
   @DeleteDateColumn()

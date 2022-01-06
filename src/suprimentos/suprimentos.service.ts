@@ -2,7 +2,7 @@ import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Suprimento } from 'src/entities/suprimento.entity';
 import { Repository } from 'typeorm';
-import { ProviderEntity } from 'src/provider/entities/provider.entity';
+import { ProviderEntity } from 'src/entities/provider.entity';
 import { CreateSuprimentoDto } from './dto/create-suprimento.dto';
 import { UpdateSuprimentoDto } from './dto/update-suprimento.dto';
 

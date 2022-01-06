@@ -1,11 +1,18 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { PedidoCompra } from 'src/entities/pedido-compra.entity';
+import { Repository } from 'typeorm';
 import { CreatePedidoCompraDto } from './dto/create-pedido-compra.dto';
 import { UpdatePedidoCompraDto } from './dto/update-pedido-compra.dto';
 
 @Injectable()
 export class PedidoCompraService {
-  create(createPedidoCompraDto: CreatePedidoCompraDto) {
-    return 'This action adds a new pedidoCompra';
+  constructor(
+    @InjectRepository(PedidoCompra)
+    private PedidoCompraRepository: Repository<PedidoCompra>,
+  ) {}
+  async create(body: CreatePedidoCompraDto) {
+    return await this.PedidoCompraRepository.save(body);
   }
 
   findAll() {

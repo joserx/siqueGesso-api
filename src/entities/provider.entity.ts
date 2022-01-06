@@ -66,7 +66,7 @@ export class ProviderEntity {
   payment_codition: PaymentCondition[];
 
   @ManyToMany(() => Produto, (produto) => produto.fornecedores, {
-    cascade: true,
+    // cascade: true,
   })
   @JoinTable({ name: 'produto_provider' })
   produto: Produto[];

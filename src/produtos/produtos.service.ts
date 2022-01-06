@@ -1,7 +1,7 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Produto } from 'src/entities/produto.entity';
-import { ProviderEntity } from 'src/provider/entities/provider.entity';
+import { ProviderEntity } from 'src/entities/provider.entity';
 import { Repository } from 'typeorm';
 import { CreateProdutoDto } from './dto/create-produto.dto';
 import { UpdateProdutoDto } from './dto/update-produto.dto';
@@ -34,15 +34,17 @@ export class ProdutosService {
   }
 
   async findOne(id: number) {
-    return await this.produtoRepository.findOne(id);
+    return await this.produtoRepository.findOne(id, {
+      relations: ['fornecedores'],
+    });
     // await this.produtoRepository.update(id, data);
   }
 
   async remove(produto: any) {
-    // let produtoEncontrado = await this.produtoRepository.findOne(produto.id);
-    // produtoEncontrado.deleted = produto.deleted;
-    // return await this.produtoRepository.save(produtoEncontrado).catch((e) => {
-    //   throw new HttpException(e, HttpStatus.INTERNAL_SERVER_ERROR);
-    // });
+    let produtoEncontrado = await this.produtoRepository.findOne(produto.id);
+    produtoEncontrado.deleted = produto.deleted;
+    return await this.produtoRepository.save(produtoEncontrado).catch((e) => {
+      throw new HttpException(e, HttpStatus.INTERNAL_SERVER_ERROR);
+    });
   }
 }

@@ -6,8 +6,10 @@ import {
   ManyToOne,
 } from 'typeorm';
 
+import { Itens } from './iten.entity';
+
 @Entity()
-export class Produto {
+export class PedidoCompra {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -32,11 +34,11 @@ export class Produto {
   @Column({ nullable: true })
   complemento: string;
 
-  //   @Column()
-  //   itens: string;
-
-  @Column({ nullable: true })
-  subtotal: number;
+  @ManyToMany(() => Itens, (item) => item.pedido, {
+    nullable: true,
+    cascade: ['insert', 'update'],
+  })
+  itensProduto: Itens;
 
   @Column({ nullable: true })
   desconto: number;
@@ -48,7 +50,7 @@ export class Produto {
   encargos: string;
 
   @Column({ nullable: true })
-  valorTotal: number;
+  valorTotal: string;
 
   @Column({ nullable: true })
   condPagamento: number;

@@ -1,12 +1,10 @@
-import { Provider } from '@nestjs/common';
-import { ProviderEntity } from 'src/provider/entities/provider.entity';
+import { ProviderEntity } from 'src/entities/provider.entity';
 import {
   Column,
   DeleteDateColumn,
   Entity,
   JoinTable,
   ManyToMany,
-  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -15,34 +13,31 @@ export class Suprimento {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToMany(() => ProviderEntity, (provider) => provider.suprimento, {
-    cascade: ['insert', 'update'],
-    onDelete: 'CASCADE',
-  })
+  @ManyToMany(() => ProviderEntity, (provider) => provider.suprimento)
   fornecedores: ProviderEntity[];
 
-  @Column({ nullable: true })
+  @Column()
   nome: string;
 
-  @Column({ nullable: true })
+  @Column()
   codigo: string;
 
-  @Column({ nullable: true })
+  @Column()
   categoria: string;
 
-  @Column({ nullable: true })
+  @Column()
   descricao: string;
 
-  @Column({ nullable: true })
+  @Column()
   quantidade: string;
 
-  @Column({ nullable: true })
+  @Column()
   precoCusto: string;
 
-  @Column({ nullable: true })
+  @Column()
   estoqueAtual: string;
 
-  @Column({ nullable: true })
+  @Column()
   estoqueMin: string;
 
   @DeleteDateColumn()

@@ -45,6 +45,6 @@ export class ProdutosController {
   @Patch(':id')
   @UseGuards(AuthGuard('jwt'))
   update(@Param('id') id, @Body() updateProdutoDto: any) {
-    return this.produtosService.update(+id, updateProdutoDto);
+    return this.produtosService.update(id, updateProdutoDto);
   }
 }

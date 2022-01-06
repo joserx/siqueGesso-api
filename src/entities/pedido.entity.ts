@@ -16,7 +16,7 @@ export class PedidoEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column('timestamp', { nullable: true })
+  @Column('timestamp')
   data: Date;
 
   @Column()
@@ -84,6 +84,7 @@ export class PedidoEntity {
     nullable: true,
     cascade: ['insert', 'update'],
   })
+  @JoinTable({ name: 'pedido_produto' })
   produto: Produto[];
 
   /* Caso seja um pedido de venda direta */
