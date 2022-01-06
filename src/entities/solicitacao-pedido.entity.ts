@@ -1,17 +1,16 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class SolicitacaoPedidoEntity {
-    @PrimaryGeneratedColumn()
-    id: number
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    numero: number
+  @Column()
+  numero: number;
 
-    @Column()
-    data: Date
+  @Column({ nullable: true })
+  data: Date;
 
-    @Column()
-    nome: string
+  @Column()
+  nome: string;
 }

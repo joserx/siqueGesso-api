@@ -30,6 +30,8 @@ import { NconfromModule } from './nconfrom/nconfrom.module';
 import { VendasDiretasModule } from './vendas-diretas/vendas-diretas.module';
 import { TabelaModule } from './tabela/tabela.module';
 import { PedidoCompraModule } from './pedido-compra/pedido-compra.module';
+import { SuprimentosModule } from './suprimentos/suprimentos.module';
+import { ItensModule } from './itens/itens.module';
 
 @Module({
   imports: [
@@ -42,12 +44,8 @@ import { PedidoCompraModule } from './pedido-compra/pedido-compra.module';
       database: 'sique_gesso',
       synchronize: true,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      migrations: [
-        'src/migration/**/*.ts',
-      ],
-      subscribers: [
-        'src/subscriber/**/*.ts',
-      ],
+      migrations: ['src/migration/**/*.ts'],
+      subscribers: ['src/subscriber/**/*.ts'],
       cli: {
         entitiesDir: 'src/entity',
         migrationsDir: 'src/migration',
@@ -81,6 +79,8 @@ import { PedidoCompraModule } from './pedido-compra/pedido-compra.module';
     VendasDiretasModule,
     TabelaModule,
     PedidoCompraModule,
+    SuprimentosModule,
+    ItensModule,
   ],
   controllers: [AppController],
   providers: [AppService],

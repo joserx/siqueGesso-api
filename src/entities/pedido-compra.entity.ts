@@ -6,59 +6,61 @@ import {
   ManyToOne,
 } from 'typeorm';
 
+import { Itens } from './iten.entity';
+
 @Entity()
-export class Produto {
+export class PedidoCompra {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ nullable: true })
   data: string;
 
-  @Column()
+  @Column({ nullable: true })
   fornecedor: string;
 
-  @Column()
+  @Column({ nullable: true })
   razaoSocial: string;
 
-  @Column()
+  @Column({ nullable: true })
   cnpj: number;
 
-  @Column()
+  @Column({ nullable: true })
   cep: number;
 
-  @Column()
+  @Column({ nullable: true })
   endereco: string;
 
-  @Column()
+  @Column({ nullable: true })
   complemento: string;
 
-  //   @Column()
-  //   itens: string;
+  @ManyToMany(() => Itens, (item) => item.pedido, {
+    nullable: true,
+    cascade: ['insert', 'update'],
+  })
+  itensProduto: Itens;
 
-  @Column()
-  subtotal: number;
-
-  @Column()
+  @Column({ nullable: true })
   desconto: number;
 
-  @Column()
+  @Column({ nullable: true })
   frete: number;
 
-  @Column()
+  @Column({ nullable: true })
   encargos: string;
 
-  @Column()
-  valorTotal: number;
+  @Column({ nullable: true })
+  valorTotal: string;
 
-  @Column()
+  @Column({ nullable: true })
   condPagamento: number;
 
-  @Column()
+  @Column({ nullable: true })
   dataVenc: number;
 
-  @Column()
+  @Column({ nullable: true })
   meioPag: number;
 
-  @Column()
+  @Column({ nullable: true })
   obs: string;
 }

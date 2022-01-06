@@ -13,7 +13,7 @@ export class PedidoGeradoEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column('timestamp')
+  @Column('timestamp', { nullable: true })
   data: Date;
 
   @Column()

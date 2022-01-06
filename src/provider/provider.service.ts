@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { CreateProviderDto } from './dto/create-provider.dto';
 import { UpdateProviderDto } from './dto/update-provider.dto';
 import { PaymentCondition } from './entities/payment_condition.entity';
-import { ProviderEntity } from './entities/provider.entity';
+import { ProviderEntity } from '../entities/provider.entity';
 
 @Injectable()
 export class ProviderService {
@@ -17,17 +17,13 @@ export class ProviderService {
   ) {}
 
   async create(createProviderDto: CreateProviderDto) {
-    console.log(createProviderDto);
-
     // const payment_coditions = await this.MatchPayment( createProviderDto.payment_condition )
     let obj: any = createProviderDto;
     // obj.payment_codition = payment_coditions;
 
     let providerObj = this.providerRepository.create(obj);
 
-    return this.providerRepository.save(providerObj).catch((e) => {
-      throw new HttpException(e, HttpStatus.INTERNAL_SERVER_ERROR);
-    });
+    return this.providerRepository.save(providerObj);
   }
 
   async findAll(): Promise<ProviderEntity[] | undefined> {

@@ -1,19 +1,19 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class BaixaEntity {
-    @PrimaryGeneratedColumn()
-    id: number
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    numero: number
+  @Column()
+  numero: number;
 
-    @Column()
-    data: Date
+  @Column({ nullable: true })
+  data: Date;
 
-    @Column()
-    sign: string
+  @Column()
+  sign: string;
 
-    @Column()
-    driver: string
+  @Column()
+  driver: string;
 }
