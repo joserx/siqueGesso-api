@@ -33,6 +33,14 @@ export class ProdutosService {
     await this.produtoRepository.update(id, data);
   }
 
+  async addEstoque(data: any) {
+    const promises = [];
+    for (const produto of data) {
+      promises.push(this.produtoRepository.save(produto));
+    }
+    return await Promise.all(promises);
+  }
+
   async findOne(id: number) {
     return await this.produtoRepository.findOne(id, {
       relations: ['fornecedores'],
@@ -41,6 +49,8 @@ export class ProdutosService {
   }
 
   async remove(produto: any) {
+    console.log('qualquerCOISA');
+
     let produtoEncontrado = await this.produtoRepository.findOne(produto.id);
     produtoEncontrado.deleted = produto.deleted;
     return await this.produtoRepository.save(produtoEncontrado).catch((e) => {

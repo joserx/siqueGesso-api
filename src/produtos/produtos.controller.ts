@@ -42,9 +42,17 @@ export class ProdutosController {
     return this.produtosService.remove(produto);
   }
 
+  @Put('/estoque')
+  @UseGuards(AuthGuard('jwt'))
+  addEstoque(@Body() produtos: any) {
+    return this.produtosService.addEstoque(produtos);
+  }
+
   @Patch(':id')
   @UseGuards(AuthGuard('jwt'))
   update(@Param('id') id, @Body() updateProdutoDto: any) {
+    console.log(updateProdutoDto);
+
     return this.produtosService.update(id, updateProdutoDto);
   }
 }
