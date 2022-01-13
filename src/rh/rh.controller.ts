@@ -1,49 +1,52 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+  Query,
+} from '@nestjs/common';
 import { RhDto } from './rh.dto';
 import { RhService } from './rh.service';
 
 @Controller('rh')
 export class RhController {
+  constructor(private readonly rhService: RhService) {}
 
-    constructor(
-        private readonly rhService : RhService
-    ) {}
+  @Get()
+  find(@Query() params) {
+    return this.rhService.find(params);
+  }
 
-    @Get()
-    find() {
-        return this.rhService.find()
-    }
+  @Get('data')
+  data() {
+    return this.rhService.disabledData();
+  }
 
-    @Get('data')
-    data() {
-        return this.rhService.disabledData();
-    }
+  @Get(':id')
+  findOne(@Param('id') id: number) {
+    return this.rhService.findOne(id);
+  }
 
-    @Get(':id')
-    findOne(@Param('id') id : number) {
-        return this.rhService.findOne(id);
-    }
+  @Get('page/:number')
+  findByPage(@Param('number') no: number) {
+    return this.rhService.findByPage(no);
+  }
 
-    @Get('page/:number')
-    findByPage(@Param('number') no : number){
-        return this.rhService.findByPage(no)
-    }
+  @Post()
+  create(@Body() data: Partial<RhDto>) {
+    return this.rhService.create(data);
+  }
 
-    @Post()
-    create(@Body() data : Partial<RhDto>) {
-        return this.rhService.create(data);
-    }
+  @Put(':id')
+  update(@Param('id') id: number, @Body() data: any) {
+    return this.rhService.update(id, data);
+  }
 
-    @Put(':id')
-    update(@Param('id') id : number, @Body() data : any) {
-        return this.rhService.update(id, data);
-    }
-
-    @Delete(':id')
-    delete(@Param('id') id : number) {
-        return this.rhService.delete(id);
-    }
-
-
-
+  @Delete(':id')
+  delete(@Param('id') id: number) {
+    return this.rhService.delete(id);
+  }
 }

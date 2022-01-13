@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Put,
+} from '@nestjs/common';
 import { FilialService } from './filial.service';
 import { CreateFilialDto } from './dto/create-filial.dto';
 import { UpdateFilialDto } from './dto/update-filial.dto';
@@ -10,6 +19,12 @@ export class FilialController {
   @Post()
   create(@Body() createFilialDto) {
     return this.filialService.create(createFilialDto);
+  }
+
+  @Get('/cep/:cep')
+  // @UseGuards(AuthGuard('jwt'))
+  returnAdress(@Param('cep') cep: string) {
+    return this.filialService.cepAdress(cep);
   }
 
   @Get()

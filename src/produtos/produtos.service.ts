@@ -49,8 +49,6 @@ export class ProdutosService {
   }
 
   async remove(produto: any) {
-    console.log('qualquerCOISA');
-
     let produtoEncontrado = await this.produtoRepository.findOne(produto.id);
     produtoEncontrado.deleted = produto.deleted;
     return await this.produtoRepository.save(produtoEncontrado).catch((e) => {

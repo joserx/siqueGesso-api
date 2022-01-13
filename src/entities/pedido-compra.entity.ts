@@ -4,6 +4,7 @@ import {
   PrimaryGeneratedColumn,
   ManyToMany,
   ManyToOne,
+  DeleteDateColumn,
 } from 'typeorm';
 
 import { Itens } from './iten.entity';
@@ -23,10 +24,10 @@ export class PedidoCompra {
   razaoSocial: string;
 
   @Column({ nullable: true })
-  cnpj: number;
+  cnpj: string;
 
   @Column({ nullable: true })
-  cep: number;
+  cep: string;
 
   @Column({ nullable: true })
   endereco: string;
@@ -53,14 +54,23 @@ export class PedidoCompra {
   valorTotal: string;
 
   @Column({ nullable: true })
-  condPagamento: number;
+  condPagamento: string;
 
   @Column({ nullable: true })
-  dataVenc: number;
+  dataVenc: string;
 
   @Column({ nullable: true })
-  meioPag: number;
+  meioPag: string;
+
+  @Column({ nullable: true })
+  status: string;
 
   @Column({ nullable: true })
   obs: string;
+
+  @DeleteDateColumn()
+  deleted_at: Date;
+
+  @Column({ nullable: true, default: false })
+  deleted: boolean;
 }
