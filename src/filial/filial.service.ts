@@ -8,7 +8,6 @@ const requestService = require('request');
 
 @Injectable()
 export class FilialService {
-  jhjhjhsqdd;
   // ver qual o problema que está acontecento aqui nesse negócio
 
   constructor(
@@ -18,9 +17,7 @@ export class FilialService {
 
   async create(data) {
     let filial = await this.filialRepository.create(data);
-    console.log(data);
     await this.filialRepository.save(filial);
-    console.log(filial);
   }
 
   async find() {
