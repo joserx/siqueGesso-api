@@ -23,10 +23,12 @@ export class CategoriaProdutoService {
   findOne(id: number) {}
 
   async update(id: number, data: any) {
-    await this.categoriaProdutoRepository.update(id, data);
+    await this.categoriaProdutoRepository.save(data);
   }
 
   async remove(id: number) {
-    return await this.categoriaProdutoRepository.delete(id);
+    return await this.categoriaProdutoRepository.softDelete(id).catch((e) => {
+      throw new HttpException(e, HttpStatus.INTERNAL_SERVER_ERROR);
+    });
   }
 }

@@ -40,7 +40,7 @@ export class CategoriaProdutoController {
   @Patch(':id')
   @UseGuards(AuthGuard('jwt'))
   update(
-    @Param('id') id: string,
+    @Param('id') id,
     @Body() updateCategoriaProdutoDto: UpdateCategoriaProdutoDto,
   ) {
     return this.categoriaProdutoService.update(+id, updateCategoriaProdutoDto);

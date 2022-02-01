@@ -33,6 +33,8 @@ import { PedidoCompraModule } from './pedido-compra/pedido-compra.module';
 import { SuprimentosModule } from './suprimentos/suprimentos.module';
 import { ItensModule } from './itens/itens.module';
 import { CategoriaProdutoModule } from './categoria-produto/categoria-produto.module';
+import { DestinacaoVendasModule } from './destinacao-vendas/destinacao-vendas.module';
+import { NovaMensagemModule } from './nova-mensagem/nova-mensagem.module';
 
 @Module({
   imports: [
@@ -83,6 +85,8 @@ import { CategoriaProdutoModule } from './categoria-produto/categoria-produto.mo
     SuprimentosModule,
     ItensModule,
     CategoriaProdutoModule,
+    DestinacaoVendasModule,
+    NovaMensagemModule,
   ],
 })
 export class AppModule {}
