@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  Query,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 
@@ -23,6 +24,11 @@ export class CategoriaProdutoController {
   @Post()
   create(@Body() createCategoriaProdutoDto: CreateCategoriaProdutoDto) {
     return this.categoriaProdutoService.create(createCategoriaProdutoDto);
+  }
+
+  @Get()
+  find(@Query() params) {
+    return this.categoriaProdutoService.find(params);
   }
 
   @Get()

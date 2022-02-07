@@ -16,7 +16,10 @@ export class CategoriaProdutoService {
     return await this.categoriaProdutoRepository.save(body);
   }
 
-  async find() {
+  async find(params?) {
+    if (params) {
+      return await this.categoriaProdutoRepository.find(params);
+    }
     return await this.categoriaProdutoRepository.find();
   }
 

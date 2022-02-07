@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  Query,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 
@@ -26,8 +27,8 @@ export class DestinacaoVendasController {
   }
 
   @Get()
-  find() {
-    return this.destinacaoVendasService.find();
+  find(@Query() params) {
+    return this.destinacaoVendasService.find(params);
   }
 
   @Get(':id')

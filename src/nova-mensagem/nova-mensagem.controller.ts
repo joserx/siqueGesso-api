@@ -1,9 +1,17 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { NovaMensagemService } from './nova-mensagem.service';
 import { CreateNovaMensagemDto } from './dto/create-nova-mensagem.dto';
 import { UpdateNovaMensagemDto } from './dto/update-nova-mensagem.dto';
 
-@Controller('nova-mensagem')
+@Controller('mensagens')
 export class NovaMensagemController {
   constructor(private readonly novaMensagemService: NovaMensagemService) {}
 
@@ -14,7 +22,7 @@ export class NovaMensagemController {
 
   @Get()
   findAll() {
-    return this.novaMensagemService.findAll();
+    return this.novaMensagemService.find();
   }
 
   @Get(':id')
@@ -23,7 +31,10 @@ export class NovaMensagemController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateNovaMensagemDto: UpdateNovaMensagemDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateNovaMensagemDto: UpdateNovaMensagemDto,
+  ) {
     return this.novaMensagemService.update(+id, updateNovaMensagemDto);
   }
 

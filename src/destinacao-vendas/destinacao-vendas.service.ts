@@ -1,8 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-
 import { DestinacaoVendaEntity } from 'src/entities/destinacao-venda.entity';
+import { Repository } from 'typeorm';
 import { CreateDestinacaoVendaDto } from './dto/create-destinacao-venda.dto';
 import { UpdateDestinacaoVendaDto } from './dto/update-destinacao-venda.dto';
 
@@ -17,7 +16,10 @@ export class DestinacaoVendasService {
     return await this.destinacaoVendaRepository.save(body);
   }
 
-  async find() {
+  async find(params?) {
+    if (params) {
+      return await this.destinacaoVendaRepository.find(params);
+    }
     return await this.destinacaoVendaRepository.find();
   }
 
