@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { VtService } from './vt.service';
 import { CreateVtDto } from './dto/create-vt.dto';
 import { UpdateVtDto } from './dto/update-vt.dto';
@@ -15,6 +23,11 @@ export class VtController {
   @Get()
   findAll() {
     return this.vtService.findAll();
+  }
+
+  @Get('ativo')
+  findAtivos() {
+    return this.vtService.findAtivo();
   }
 
   @Get(':id')

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PedidoCompra } from 'src/entities/pedido-compra.entity';
 import { Repository } from 'typeorm';
@@ -15,8 +15,8 @@ export class PedidoCompraService {
     return await this.PedidoCompraRepository.save(body);
   }
 
-  findAll() {
-    return `This action returns all pedidoCompra`;
+  async findAll() {
+    return await this.PedidoCompraRepository.find();
   }
 
   findOne(id: number) {
@@ -27,7 +27,9 @@ export class PedidoCompraService {
     return `This action updates a #${id} pedidoCompra`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} pedidoCompra`;
+  async remove(id: number) {
+    return await this.PedidoCompraRepository.softDelete(id).catch((e) => {
+      throw new HttpException(e, HttpStatus.INTERNAL_SERVER_ERROR);
+    });
   }
 }

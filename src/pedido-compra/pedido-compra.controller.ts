@@ -1,7 +1,17 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  UseGuards,
+} from '@nestjs/common';
 import { PedidoCompraService } from './pedido-compra.service';
 import { CreatePedidoCompraDto } from './dto/create-pedido-compra.dto';
 import { UpdatePedidoCompraDto } from './dto/update-pedido-compra.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('pedido-compra')
 export class PedidoCompraController {
@@ -13,6 +23,7 @@ export class PedidoCompraController {
   }
 
   @Get()
+  @UseGuards(AuthGuard('jwt'))
   findAll() {
     return this.pedidoCompraService.findAll();
   }
@@ -23,7 +34,10 @@ export class PedidoCompraController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePedidoCompraDto: UpdatePedidoCompraDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updatePedidoCompraDto: UpdatePedidoCompraDto,
+  ) {
     return this.pedidoCompraService.update(+id, updatePedidoCompraDto);
   }
 
