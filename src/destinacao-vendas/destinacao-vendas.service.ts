@@ -23,6 +23,10 @@ export class DestinacaoVendasService {
     return await this.destinacaoVendaRepository.find();
   }
 
+  async findAll() {
+    return await this.destinacaoVendaRepository.find();
+  }
+
   findOne(id: number) {}
 
   async update(id: number, data: any) {
