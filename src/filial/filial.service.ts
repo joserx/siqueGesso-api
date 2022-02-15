@@ -44,11 +44,12 @@ export class FilialService {
 
   cepAdress(cep: string) {
     return new Promise((resolve) => {
+      
       requestService(
-        `http://viacep.com.br/ws/${cep}/json`,
+        `https://viacep.com.br/ws/${cep}/json/`,
         (error, response, body) => {
           try {
-            const response = JSON.parse(body);
+             const response = JSON.parse(body);
 
             if (response.cep) {
               resolve(response);

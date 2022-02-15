@@ -37,6 +37,8 @@ import { DestinacaoVendasModule } from './destinacao-vendas/destinacao-vendas.mo
 import { NovaMensagemModule } from './nova-mensagem/nova-mensagem.module';
 import { MessageGateway } from './message.gateway';
 import { CategoriaFornecedorModule } from './categoria-fornecedor/categoria-fornecedor.module';
+import { ContasPagarModule } from './contas-pagar/contas-pagar.module';
+import { ContasReceberModule } from './contas-receber/contas-receber.module';
 @Module({
   providers: [MessageGateway],
   imports: [
@@ -90,6 +92,8 @@ import { CategoriaFornecedorModule } from './categoria-fornecedor/categoria-forn
     DestinacaoVendasModule,
     NovaMensagemModule,
     CategoriaFornecedorModule,
+    ContasPagarModule,
+    ContasReceberModule,
   ],
 })
 export class AppModule {}
