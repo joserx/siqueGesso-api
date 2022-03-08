@@ -56,4 +56,10 @@ export class ContasReceber {
 
   @Column({ nullable: true })
   obs: string;
+
+  @DeleteDateColumn()
+  deleted_at: Date;
+
+  @Column({ nullable: true, default: false })
+  deleted: boolean;
 }

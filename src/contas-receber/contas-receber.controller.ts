@@ -1,9 +1,17 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  UseGuards,
+} from '@nestjs/common';
 import { ContasReceberService } from './contas-receber.service';
 import { CreateContasReceberDto } from './dto/create-contas-receber.dto';
 import { UpdateContasReceberDto } from './dto/update-contas-receber.dto';
 import { AuthGuard } from '@nestjs/passport';
-
 
 @Controller('contas-receber')
 export class ContasReceberController {
@@ -25,8 +33,9 @@ export class ContasReceberController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateContasReceberDto: UpdateContasReceberDto) {
-    return this.contasReceberService.update(+id, updateContasReceberDto);
+  @UseGuards(AuthGuard('jwt'))
+  update(@Param('id') id, @Body() updateContasPagarDto: any) {
+    return this.contasReceberService.update(id, updateContasPagarDto);
   }
 
   @Delete(':id')

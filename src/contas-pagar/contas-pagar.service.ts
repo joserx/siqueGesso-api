@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import {ContasPagar} from 'src/entities/contas-pagar.entity'
+import { ContasPagar } from 'src/entities/contas-pagar.entity';
 import { Repository } from 'typeorm';
 import { CreateContasPagarDto } from './dto/create-contas-pagar.dto';
 import { UpdateContasPagarDto } from './dto/update-contas-pagar.dto';
@@ -9,9 +9,9 @@ import { UpdateContasPagarDto } from './dto/update-contas-pagar.dto';
 export class ContasPagarService {
   constructor(
     @InjectRepository(ContasPagar)
-    private ContasPagarRepository: Repository<ContasPagar>
-  ){}
-  
+    private ContasPagarRepository: Repository<ContasPagar>,
+  ) {}
+
   async create(body: CreateContasPagarDto) {
     return await this.ContasPagarRepository.save(body);
   }
@@ -24,13 +24,13 @@ export class ContasPagarService {
     return `This action returns a #${id} contasPagar`;
   }
 
-  async update(id: number, data:any) {
+  async update(id: number, data: any) {
     await this.ContasPagarRepository.update(id, data);
   }
 
   async remove(id: number) {
-    return await this.ContasPagarRepository.softDelete(id).catch((e)=>{
+    return await this.ContasPagarRepository.softDelete(id).catch((e) => {
       throw new HttpException(e, HttpStatus.INTERNAL_SERVER_ERROR);
-    })
+    });
   }
 }

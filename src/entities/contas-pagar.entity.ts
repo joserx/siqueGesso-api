@@ -8,7 +8,6 @@ import {
 } from 'typeorm';
 import { ProviderEntity } from 'src/entities/provider.entity';
 
-
 @Entity()
 export class ContasPagar {
   @PrimaryGeneratedColumn()
@@ -39,19 +38,19 @@ export class ContasPagar {
   compensado: string;
 
   @Column({ nullable: true })
-  situação: string;
+  situacao: string;
 
   @Column({ nullable: true })
   unidade: string;
 
   @Column({ nullable: true })
-  valorTotal: number;
+  valorTotal: string;
 
   @Column({ nullable: true })
   fornecedor: string;
 
-//   @ManyToMany(() => ProviderEntity, (provider) => provider.produto)
-//   fornecedores: ProviderEntity[];
+  //   @ManyToMany(() => ProviderEntity, (provider) => provider.produto)
+  //   fornecedores: ProviderEntity[];
 
   @Column({ nullable: true })
   centroCusto: string;
@@ -61,7 +60,10 @@ export class ContasPagar {
 
   @Column({ nullable: true })
   obs: string;
-  
-  
-  
+
+  @DeleteDateColumn()
+  deleted_at: Date;
+
+  @Column({ nullable: true, default: false })
+  deleted: boolean;
 }

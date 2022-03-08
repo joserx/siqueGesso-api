@@ -13,7 +13,6 @@ import { CreateContasPagarDto } from './dto/create-contas-pagar.dto';
 import { UpdateContasPagarDto } from './dto/update-contas-pagar.dto';
 import { AuthGuard } from '@nestjs/passport';
 
-
 @Controller('contas-pagar')
 export class ContasPagarController {
   constructor(private readonly contasPagarService: ContasPagarService) {}
@@ -34,11 +33,9 @@ export class ContasPagarController {
   }
 
   @Patch(':id')
-  update(
-    @Param('id') id: string,
-    @Body() updateContasPagarDto: UpdateContasPagarDto,
-  ) {
-    return this.contasPagarService.update(+id, updateContasPagarDto);
+  @UseGuards(AuthGuard('jwt'))
+  update(@Param('id') id, @Body() updateContasPagarDto: any) {
+    return this.contasPagarService.update(id, updateContasPagarDto);
   }
 
   @Delete(':id')
