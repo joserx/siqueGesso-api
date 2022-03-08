@@ -23,4 +23,7 @@ export class NovaMensagem {
 
   @Column({ nullable: true })
   usuario: number;
+
+  @Column({ nullable: true })
+  texto: string;
 }

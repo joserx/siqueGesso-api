@@ -35,8 +35,12 @@ import { ItensModule } from './itens/itens.module';
 import { CategoriaProdutoModule } from './categoria-produto/categoria-produto.module';
 import { DestinacaoVendasModule } from './destinacao-vendas/destinacao-vendas.module';
 import { NovaMensagemModule } from './nova-mensagem/nova-mensagem.module';
-
+import { MessageGateway } from './message.gateway';
+import { CategoriaFornecedorModule } from './categoria-fornecedor/categoria-fornecedor.module';
+import { ContasPagarModule } from './contas-pagar/contas-pagar.module';
+import { ContasReceberModule } from './contas-receber/contas-receber.module';
 @Module({
+  providers: [MessageGateway],
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -87,6 +91,9 @@ import { NovaMensagemModule } from './nova-mensagem/nova-mensagem.module';
     CategoriaProdutoModule,
     DestinacaoVendasModule,
     NovaMensagemModule,
+    CategoriaFornecedorModule,
+    ContasPagarModule,
+    ContasReceberModule,
   ],
 })
 export class AppModule {}

@@ -27,6 +27,12 @@ export class DestinacaoVendasController {
   }
 
   @Get()
+  @UseGuards(AuthGuard('jwt'))
+  findAll() {
+    return this.destinacaoVendasService.findAll();
+  }
+
+  @Get()
   find(@Query() params) {
     return this.destinacaoVendasService.find(params);
   }
