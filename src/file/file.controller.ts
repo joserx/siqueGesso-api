@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post, Put, Res, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { existsSync } from 'fs';
-import { join } from 'path';
+import { join, resolve } from 'path';
 import { FileDto } from './file.dto';
 import { FileService } from './file.service';
 import { multerOptions } from './multer.options';
@@ -22,7 +22,6 @@ export class FileController {
     findOne(@Param('id') id: number) {
         return this.fileService.findOne(id);
     }
-
     @Delete(':id')
     delete(@Param('id') id: number) {
         return this.fileService.delete(id);
@@ -39,7 +38,7 @@ export class FileController {
     @Post('upload')
     @UseInterceptors(FileInterceptor('file', multerOptions))
     upload(@UploadedFile() file) {
-        let data : Partial<FileDto> = {};
+        let data: Partial<FileDto> = {};
         data.url = file.path;
         data.fileName = file.filename;
         data.originalName = file.originalname
@@ -48,17 +47,20 @@ export class FileController {
 
     @Get('download/:name')
     download(@Param('name') name: string, @Res() res) {
-        const checkPath = join(__dirname, '../../uploads/' + name);
+        const checkpath = join(__dirname, '../../../uploads/' + name)
         try {
-            const test = existsSync(checkPath);
-            if (test) {
-                return res.sendFile(name, { root: './uploads/', responseType: 'stream' });
-            } else {
-                throw new HttpException("File not found", HttpStatus.NOT_FOUND);
+            const teste = existsSync(checkpath);
+            if (teste) {
+              // console.log('encontrado')
+      
+              return res.sendFile(resolve(`./uploads/${name}`));
+            }else{
+              throw new HttpException("Arquivo não encontrado", HttpStatus.NOT_FOUND);
             }
-        } catch (err) {
-            throw new HttpException("Error", HttpStatus.BAD_REQUEST);
-        }
+          } catch(err) {
+            console.error('error', err);
+            throw new HttpException("Erro ao buscar arquivo", HttpStatus.BAD_REQUEST);
+          }
     }
 
 }
