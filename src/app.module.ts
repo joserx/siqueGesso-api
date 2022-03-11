@@ -39,6 +39,7 @@ import { MessageGateway } from './message.gateway';
 import { CategoriaFornecedorModule } from './categoria-fornecedor/categoria-fornecedor.module';
 import { ContasPagarModule } from './contas-pagar/contas-pagar.module';
 import { ContasReceberModule } from './contas-receber/contas-receber.module';
+import { PermissionsModule } from './permissions/permissions.module';
 @Module({
   providers: [MessageGateway],
   imports: [
@@ -94,6 +95,7 @@ import { ContasReceberModule } from './contas-receber/contas-receber.module';
     CategoriaFornecedorModule,
     ContasPagarModule,
     ContasReceberModule,
+    PermissionsModule,
   ],
 })
 export class AppModule {}
