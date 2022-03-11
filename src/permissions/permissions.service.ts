@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PermissionEntity } from 'src/entities/permission.entity';
 import { Repository } from 'typeorm';
@@ -13,12 +13,17 @@ export class PermissionsService {
     private permissionRepository: Repository<PermissionEntity>
   ){ }
 
-  create(createPermissionDto: CreatePermissionDto) {
-    return 'This action adds a new permission';
+  async create(data: any) {
+    if(data){
+      let permission = await this.permissionRepository.create(data)
+      return this.permissionRepository.save(permission) 
+    }else{
+      throw new HttpException('No provided data', 500)
+    }
   }
 
-  findAll() {
-    return `This action returns all permissions`;
+  async findAll() {
+    return await this.permissionRepository.find();
   }
 
   findOne(id: number) {
@@ -29,7 +34,11 @@ export class PermissionsService {
     return `This action updates a #${id} permission`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} permission`;
+  async remove(id: number) {
+    if(id && Number(id)){
+      await this.permissionRepository.delete(id)
+    }else{
+      throw new HttpException('No provided id', 500)
+    }
   }
 }
