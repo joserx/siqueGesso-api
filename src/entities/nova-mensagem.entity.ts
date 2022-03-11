@@ -26,4 +26,7 @@ export class NovaMensagem {
 
   @Column({ nullable: true })
   texto: string;
+
+  @DeleteDateColumn()
+  deleted_at: Date;
 }

@@ -48,6 +48,9 @@ export class ProviderEntity {
   @Column()
   municipal_registration: string;
 
+  @Column({nullable: true})
+  minimum_billing: number
+
   @OneToOne(() => AddressEntity, (address) => address.id, {
     cascade: ['insert', 'update'],
   })
