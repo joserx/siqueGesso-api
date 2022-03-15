@@ -9,5 +9,5 @@ export class PermissionEntity {
     name: string
 
     @Column({nullable: true})
-    permission: string
+    permission: number
 }

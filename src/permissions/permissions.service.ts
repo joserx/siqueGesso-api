@@ -26,12 +26,25 @@ export class PermissionsService {
     return await this.permissionRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} permission`;
+  async findOne(id: number) {
+    if(id && Number(id)){
+      return await this.permissionRepository.findOne(id)
+    }else{
+      throw new HttpException('No provided id', 500)
+    }
   }
 
-  update(id: number, updatePermissionDto: UpdatePermissionDto) {
-    return `This action updates a #${id} permission`;
+  async update(id: number, data: any) {
+    if(id && Number(id)){
+      let permission = await this.permissionRepository.findOne(id)
+      if(permission){
+        return await this.permissionRepository.save({id, ...permission, ...data})
+      }else{
+        throw new HttpException('Nothing with this id founded', 500)
+      }
+    }else{
+      throw new HttpException('No provided id', 500)
+    }
   }
 
   async remove(id: number) {
