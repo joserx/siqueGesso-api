@@ -12,7 +12,6 @@ export class CreateProviderDto {
     contribuinte: string;
     state_registration: string;
     is_exempt: boolean;
-    municipal_registration: string;
     address: AddressEntity;
     contacts: Array<Contact>
     payment_condition: Array<number>

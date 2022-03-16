@@ -21,6 +21,9 @@ export class PedidoCompra {
   fornecedor: string;
 
   @Column({ nullable: true })
+  faturamentoMinimo: number;
+
+  @Column({ nullable: true })
   razaoSocial: string;
 
   @Column({ nullable: true })
@@ -67,6 +70,9 @@ export class PedidoCompra {
 
   @Column({ nullable: true })
   obs: string;
+
+  @Column({default: false})
+  aceite: boolean
 
   @DeleteDateColumn()
   deleted_at: Date;
