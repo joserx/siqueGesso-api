@@ -1,6 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ContasPagar } from 'src/entities/contas-pagar.entity';
+import { PedidoCompra } from 'src/entities/pedido-compra.entity';
 import { Repository } from 'typeorm';
 import { CreateContasPagarDto } from './dto/create-contas-pagar.dto';
 import { UpdateContasPagarDto } from './dto/update-contas-pagar.dto';
@@ -20,8 +21,8 @@ export class ContasPagarService {
     return await this.ContasPagarRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} contasPagar`;
+  async findOne(id: number) {
+    return this.ContasPagarRepository.findOne(id);
   }
 
   async update(id: number, data: any) {
