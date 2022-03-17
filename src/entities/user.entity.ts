@@ -8,7 +8,7 @@ export class UsersEntity{
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column('int', {default: 0})
+    @Column('int', {default: 0, nullable:true})
     permission: number;
 
     @Column({unique: true})
