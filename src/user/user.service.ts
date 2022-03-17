@@ -18,7 +18,7 @@ export class UserService {
      * GET ALL USERS IN THE DATABASE
      */
     async find() {
-        return await this.userRepository.find({ relations: ['avatar']});
+        return await this.userRepository.find({ relations: ['avatar', 'permission']});
     }
 
     /**
@@ -26,7 +26,7 @@ export class UserService {
      */
     async findOne(id: number) {
         if (id && Number(id)) {
-            return await this.userRepository.findOne(id, {relations: ['avatar']})
+            return await this.userRepository.findOne(id, {relations: ['avatar', 'permission']})
         } else {
             throw new HttpException('No id provided', 500);
         }
@@ -37,7 +37,7 @@ export class UserService {
      */
     async findOneByEmail(email : string) {
         if (email) {
-            return await this.userRepository.findOne({email}, {relations: ['avatar']})
+            return await this.userRepository.findOne({email}, {relations: ['avatar', 'permission']})
         } else {
             throw new HttpException('No email provided', 500);
         }
@@ -48,7 +48,7 @@ export class UserService {
      */
     async create(data: Partial<UserDto>) {
         if (data.email && data.password) {
-            if (data.permission && data.permission < 0) {
+            if (!data.permission) {
                 throw new HttpException('The permission value must be more than zero.', 500);
             } else {
                 let user = await this.userRepository.create(data)
@@ -65,7 +65,7 @@ export class UserService {
      */
     async update(id: number, data: Partial<UserDto>) {
         if (id && Number(id)) {
-            if (data.permission && data.permission < 0) {
+            if (!data.permission) {
                 throw new HttpException('The permission value must be more than zero.', 500);
             } else {
                 data.password = await bcrypt.hash(data.password, 12);

@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { UsersEntity } from "./user.entity";
 
 @Entity()
 export class PermissionEntity {
@@ -10,4 +11,7 @@ export class PermissionEntity {
 
     @Column({nullable: true})
     permission: number
+
+    @OneToMany(()=> UsersEntity, user => user.permission, {nullable: true})
+    user: UsersEntity[]
 }
