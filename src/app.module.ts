@@ -40,6 +40,7 @@ import { CategoriaFornecedorModule } from './categoria-fornecedor/categoria-forn
 import { ContasPagarModule } from './contas-pagar/contas-pagar.module';
 import { ContasReceberModule } from './contas-receber/contas-receber.module';
 import { PermissionsModule } from './permissions/permissions.module';
+import { CondicoesPagamentoModule } from './condicoes-pagamento/condicoes-pagamento.module';
 @Module({
   providers: [MessageGateway],
   imports: [
@@ -96,6 +97,7 @@ import { PermissionsModule } from './permissions/permissions.module';
     ContasPagarModule,
     ContasReceberModule,
     PermissionsModule,
+    CondicoesPagamentoModule,
   ],
 })
 export class AppModule {}
