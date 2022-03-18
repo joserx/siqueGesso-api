@@ -1,5 +1,7 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { UpdateContasPagarDto } from 'src/contas-pagar/dto/update-contas-pagar.dto';
+import { ContasPagar } from 'src/entities/contas-pagar.entity';
 import { PedidoCompra } from 'src/entities/pedido-compra.entity';
 import { Repository } from 'typeorm';
 import { CreatePedidoCompraDto } from './dto/create-pedido-compra.dto';
@@ -8,6 +10,8 @@ import { UpdatePedidoCompraDto } from './dto/update-pedido-compra.dto';
 @Injectable()
 export class PedidoCompraService {
   constructor(
+    @InjectRepository(ContasPagar)
+    private ContasPagarRepository: Repository<ContasPagar>,
     @InjectRepository(PedidoCompra)
     private PedidoCompraRepository: Repository<PedidoCompra>,
   ) {}
@@ -20,11 +24,26 @@ export class PedidoCompraService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} pedidoCompra`;
+    return this.PedidoCompraRepository.findOne(id)
   }
 
-  update(id: number, updatePedidoCompraDto: UpdatePedidoCompraDto) {
-    return `This action updates a #${id} pedidoCompra`;
+  async update(id: number, data: any) {
+    await this.PedidoCompraRepository.update(id, data)
+    const pedidoCompra = await this.findOne(id)
+    if (pedidoCompra.aceite = true){
+      const contaPagar: UpdateContasPagarDto  = {
+        id: pedidoCompra.id,
+        descricao: pedidoCompra.obs,
+        fornecedor: pedidoCompra.fornecedor,
+        pagamento: pedidoCompra.meioPag,
+        data: pedidoCompra.data,
+        valorTotal: pedidoCompra.valorTotal,
+        situacao: pedidoCompra.status,
+
+      };
+      this.ContasPagarRepository.save(contaPagar)
+
+    }
   }
 
   async remove(id: number) {
