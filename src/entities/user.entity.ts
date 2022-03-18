@@ -1,15 +1,14 @@
+
 import * as bcrypt from 'bcryptjs';
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, BeforeInsert, OneToMany, OneToOne, JoinColumn, BeforeUpdate, ManyToOne, JoinTable } from "typeorm";
 import { FileEntity } from './file.entity';
+import { PermissionEntity } from './permission.entity';
 
 @Entity()
 export class UsersEntity{
 
     @PrimaryGeneratedColumn()
     id: number;
-
-    @Column('int', {default: 0, nullable:true})
-    permission: number;
 
     @Column({unique: true})
     email: string;
@@ -35,6 +34,9 @@ export class UsersEntity{
     @Column({nullable: true})
     lojaId: number
 
+    @ManyToOne(() => PermissionEntity, permission => permission.user, {nullable: true})
+    permission: PermissionEntity[]
+
     @ManyToOne(type => FileEntity, file => file.id, {nullable : true})
     @JoinTable()
     avatar : FileEntity;
@@ -49,4 +51,5 @@ export class UsersEntity{
         this.password = await bcrypt.hash(this.password, 12);
     }
     
+
 }
