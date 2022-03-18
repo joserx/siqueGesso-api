@@ -12,7 +12,7 @@ export class ClientService {
     ) { }
 
     async find() {
-        return await this.clientRepository.find({ select: ['id', 'name', 'surname', 'email', 'companyEmail', 'companyTelephone', 'telephone', 'fantasyName'], relations: ['addresses'] });
+        return await this.clientRepository.find({ select: ['id', 'name', 'surname', 'email', 'companyEmail', 'companyTelephone', 'telephone', 'fantasyName', 'cnpj'], relations: ['addresses'] });
     }
 
     async findOne(id : number) {
