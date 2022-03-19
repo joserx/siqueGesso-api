@@ -32,13 +32,13 @@ export class PedidoCompraService {
     const pedidoCompra = await this.findOne(id)
     if (pedidoCompra.aceite = true){
       const contaPagar: UpdateContasPagarDto  = {
-        id: pedidoCompra.id,
         descricao: pedidoCompra.obs,
         fornecedor: pedidoCompra.fornecedor,
         pagamento: pedidoCompra.meioPag,
         data: pedidoCompra.data,
         valorTotal: pedidoCompra.valorTotal,
         situacao: pedidoCompra.status,
+        pedidoCompra: true
 
       };
       this.ContasPagarRepository.save(contaPagar)

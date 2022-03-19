@@ -61,6 +61,9 @@ export class ContasPagar {
   @Column({ nullable: true })
   obs: string;
 
+  @Column({ nullable: true })
+  pedidoCompra: boolean
+
   @DeleteDateColumn()
   deleted_at: Date;
 

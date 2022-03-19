@@ -1,3 +1,4 @@
+
 import * as bcrypt from 'bcryptjs';
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, BeforeInsert, OneToMany, OneToOne, JoinColumn, BeforeUpdate, ManyToOne, JoinTable } from "typeorm";
 import { FileEntity } from './file.entity';
@@ -50,4 +51,5 @@ export class UsersEntity{
         this.password = await bcrypt.hash(this.password, 12);
     }
     
+
 }
