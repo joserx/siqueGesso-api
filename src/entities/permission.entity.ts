@@ -12,6 +12,6 @@ export class PermissionEntity {
     @Column({nullable: true})
     permission: number
 
-    @OneToMany(()=> UsersEntity, user => user.permission, {nullable: true})
+    @OneToMany(()=> UsersEntity, user => user.permission, {nullable: true, onDelete: "SET NULL"})
     user: UsersEntity[]
 }
