@@ -34,19 +34,13 @@ export class CondicoesPagamentoController {
   @Get(':id')
   @UseGuards(AuthGuard('jwt'))
   findOne(@Param('id') id: string) {
-    return this.condicoesPagamentoService.findOne(+id);
+    return this.condicoesPagamentoService.findOne(id);
   }
 
   @Patch(':id')
   @UseGuards(AuthGuard('jwt'))
-  update(
-    @Param('id') id: string,
-    @Body() updateCondicoesPagamentoDto: UpdateCondicoesPagamentoDto,
-  ) {
-    return this.condicoesPagamentoService.update(
-      +id,
-      updateCondicoesPagamentoDto,
-    );
+  update(@Param('id') id: string, @Body() updateCondicoesPagamentoDto: UpdateCondicoesPagamentoDto) {
+    return this.condicoesPagamentoService.update(+id, updateCondicoesPagamentoDto);
   }
 
   @Delete(':id')
