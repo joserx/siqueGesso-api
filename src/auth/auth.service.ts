@@ -19,7 +19,7 @@ export class AuthService {
 
     async login(data: any) {
         const email = data.email;
-        const user = await this.usersRepository.findOne({ where: { email }, relations: ['avatar']});
+        const user = await this.usersRepository.findOne({ where: { email }, relations: ['avatar', 'permission']});
 
         if (user && await this.comparePassword(data.password, user.password)) {
             const payload = {
@@ -36,7 +36,7 @@ export class AuthService {
 
     async checkPassword(data: any){
         const email = data.email;
-        const user = await this.usersRepository.findOne({ where: { email }, relations: ['avatar']});
+        const user = await this.usersRepository.findOne({ where: { email }, relations: ['avatar', 'permission']});
         if(await this.comparePassword(data.password, user.password)){
             return true
         }else{

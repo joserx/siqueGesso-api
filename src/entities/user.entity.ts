@@ -34,7 +34,7 @@ export class UsersEntity{
     @Column({nullable: true})
     lojaId: number
 
-    @ManyToOne(() => PermissionEntity, permission => permission.user, {nullable: true})
+    @ManyToOne(() => PermissionEntity, permission => permission.user, {nullable: true, onDelete: "SET NULL"})
     permission: PermissionEntity[]
 
     @ManyToOne(type => FileEntity, file => file.id, {nullable : true})
