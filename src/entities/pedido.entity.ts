@@ -111,12 +111,6 @@ export class PedidoEntity {
   complemento: string;
 
   @Column({ nullable: true })
-  motorista: string;
-
-  @Column({ nullable: true })
-  placa: string;
-
-  @Column({ nullable: true })
   valorFreteEntrega: number;
 
   @Column({ nullable: true })
