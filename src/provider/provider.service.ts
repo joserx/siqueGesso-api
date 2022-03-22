@@ -18,17 +18,17 @@ export class ProviderService {
 
   async create(createProviderDto: CreateProviderDto) {
     // const payment_coditions = await this.MatchPayment( createProviderDto.payment_condition )
-    let obj: any = createProviderDto;
+    // let obj: any = createProviderDto;
     // obj.payment_codition = payment_coditions;
 
-    let providerObj = this.providerRepository.create(obj);
+    let providerObj = await this.providerRepository.create(createProviderDto);
 
-    return this.providerRepository.save(providerObj);
+    return await this.providerRepository.save(providerObj);
   }
 
   async findAll(): Promise<ProviderEntity[] | undefined> {
     return this.providerRepository
-      .find({ relations: ['contacts', 'address'] })
+      .find({ relations: ['contacts', 'address', 'payment_condition'] })
       .catch((e) => {
         throw new HttpException(e, HttpStatus.INTERNAL_SERVER_ERROR);
       });
@@ -40,7 +40,7 @@ export class ProviderService {
     });
   }
 
-  async update(id: number, updateProviderDto: UpdateProviderDto) {
+  async update(id: number, updateProviderDto: any) {
     // warning update wait for full implementation (many to many relation)
 
     return this.providerRepository.update(id, updateProviderDto).catch((e) => {

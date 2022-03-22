@@ -5,7 +5,10 @@ import {
   ManyToMany,
   ManyToOne,
   DeleteDateColumn,
+  JoinColumn,
+  OneToMany,
 } from 'typeorm';
+import { CondicoesPagamentoEntity } from './condicoes-pagamento.entity';
 
 import { Itens } from './iten.entity';
 
@@ -56,14 +59,12 @@ export class PedidoCompra {
   @Column({ nullable: true })
   valorTotal: string;
 
-  @Column({ nullable: true })
-  condPagamento: string;
+  @OneToMany(() => CondicoesPagamentoEntity, (condicoes) => condicoes.id)
+  @JoinColumn()
+  condicoesPagamento: CondicoesPagamentoEntity[];
 
   @Column({ nullable: true })
   dataVenc: string;
-
-  @Column({ nullable: true })
-  meioPag: string;
 
   @Column({ nullable: true })
   status: string;
@@ -71,8 +72,8 @@ export class PedidoCompra {
   @Column({ nullable: true })
   obs: string;
 
-  @Column({default: false})
-  aceite: boolean
+  @Column({ default: false })
+  aceite: boolean;
 
   @DeleteDateColumn()
   deleted_at: Date;

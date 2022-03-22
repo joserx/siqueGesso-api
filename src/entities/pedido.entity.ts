@@ -28,6 +28,9 @@ export class PedidoEntity {
   @Column()
   cliente: string;
 
+  @Column({nullable: true})
+  statusPedido: string;
+
   @Column()
   condPagamento: string;
 
@@ -109,12 +112,6 @@ export class PedidoEntity {
 
   @Column({ nullable: true })
   complemento: string;
-
-  @Column({ nullable: true })
-  motorista: string;
-
-  @Column({ nullable: true })
-  placa: string;
 
   @Column({ nullable: true })
   valorFreteEntrega: number;

@@ -25,6 +25,9 @@ export class PedidoGeradoEntity {
   @Column()
   cliente: string;
 
+  @Column({nullable: true})
+  statusPedido: string;
+
   @Column()
   condPagamento: string;
 

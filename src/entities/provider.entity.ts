@@ -15,6 +15,7 @@ import {
 import { Contact } from 'src/provider/entities/contact.entity';
 import { Produto } from 'src/entities/produto.entity';
 import { Suprimento } from 'src/entities/suprimento.entity';
+import { CondicoesPagamentoEntity } from './condicoes-pagamento.entity';
 
 @Entity()
 export class ProviderEntity {
@@ -59,11 +60,18 @@ export class ProviderEntity {
   })
   contacts: Contact[];
 
-  @ManyToMany(() => PaymentCondition, (paymentCond) => paymentCond.provider, {
+  // @ManyToMany(() => PaymentCondition, (paymentCond) => paymentCond.provider, {
+  //   nullable: true,
+  //   cascade: ['insert', 'update'],
+  // })
+  // payment_codition: PaymentCondition[];
+
+  @ManyToMany(() => CondicoesPagamentoEntity, (condicoes) => condicoes.provider, {
     nullable: true,
     cascade: ['insert', 'update'],
   })
-  payment_codition: PaymentCondition[];
+  @JoinTable()
+  payment_condition: CondicoesPagamentoEntity[];
 
   @ManyToMany(() => Produto, (produto) => produto.fornecedores, {
     // cascade: true,
