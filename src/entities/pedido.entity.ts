@@ -28,6 +28,9 @@ export class PedidoEntity {
   @Column()
   cliente: string;
 
+  @Column({nullable: true})
+  statusPedido: string;
+
   @Column()
   condPagamento: string;
 
