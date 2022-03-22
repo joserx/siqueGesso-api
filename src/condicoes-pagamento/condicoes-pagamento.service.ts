@@ -20,15 +20,15 @@ export class CondicoesPagamentoService {
     return await this.condicoesPagamentoRepository.find();
   }
 
-  findOne(id: number) {}
+  findOne(id: any) {
+    return this.condicoesPagamentoRepository.findOne(id)
+  }
 
   async update(id: number, data: any) {
-    await this.condicoesPagamentoRepository.save(data);
+    await this.condicoesPagamentoRepository.update(id, data);
   }
 
   async remove(id: number) {
-    return await this.condicoesPagamentoRepository.softDelete(id).catch((e) => {
-      throw new HttpException(e, HttpStatus.INTERNAL_SERVER_ERROR);
-    });
+    return await this.condicoesPagamentoRepository.delete({id})
   }
 }
