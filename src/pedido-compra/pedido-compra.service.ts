@@ -16,7 +16,8 @@ export class PedidoCompraService {
     private PedidoCompraRepository: Repository<PedidoCompra>,
   ) {}
   async create(body: CreatePedidoCompraDto) {
-    return await this.PedidoCompraRepository.save(body);
+    const pedidoCompra = await this.PedidoCompraRepository.create(body)
+    return await this.PedidoCompraRepository.save(pedidoCompra);
   }
 
   async findAll() {
@@ -34,7 +35,7 @@ export class PedidoCompraService {
       const contaPagar: UpdateContasPagarDto  = {
         descricao: pedidoCompra.obs,
         fornecedor: pedidoCompra.fornecedor,
-        pagamento: pedidoCompra.meioPag,
+        pagamento: pedidoCompra.condicoesPagamento,
         data: pedidoCompra.data,
         valorTotal: pedidoCompra.valorTotal,
         situacao: pedidoCompra.status,

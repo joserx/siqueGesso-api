@@ -15,9 +15,10 @@ export class PaymentCondition {
   @Column()
   title: string;
 
-  @ManyToMany(() => ProviderEntity, (provider) => provider.payment_codition, {
-    cascade: ['insert', 'update'],
-  })
+  // @ManyToMany(() => ProviderEntity, (provider) => provider.payment_codition, {
+  //   cascade: ['insert', 'update'],
+  // })
+
   @JoinTable()
   provider: ProviderEntity[];
 }
