@@ -2,27 +2,28 @@ import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ClientEntity } from 'src/entities/client.entity';
 import { Repository } from 'typeorm';
+import { CreateClientDto } from './dto/create-client.dto';
 
 @Injectable()
 export class ClientService {
 
     constructor(
         @InjectRepository(ClientEntity)
-        private readonly clientRepository : Repository<ClientEntity>
-    ) { }
+        private readonly clientRepository : Repository<ClientEntity>,
+    ) {}
 
     async find() {
-        return await this.clientRepository.find({ select: ['id', 'name', 'surname', 'email', 'companyEmail', 'companyTelephone', 'telephone', 'fantasyName', 'cnpj'], relations: ['addresses'] });
+        return await this.clientRepository.find({ select: ['id', 'name', 'surname', 'email', 'companyEmail', 'companyTelephone', 'telephone', 'fantasyName', 'cnpj',], relations: ['addresses', 'condicoesPagamento',] });
     }
 
     async findOne(id : number) {
         return await this.clientRepository.findOne(id, { relations: ['addresses', 'tabela'] });
     }
 
-    async create(data : any) {
-        let client : any = await this.clientRepository.create(data);
-        await this.clientRepository.save(client)
-        return await this.clientRepository.findOne(client.id, { relations: ['addresses'] });
+    async create(CreateClientDto : CreateClientDto) {
+        let client = await this.clientRepository.create(CreateClientDto);
+
+        return await this.clientRepository.save(client);
     }
 
     async update(id : number, data : any) {

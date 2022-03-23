@@ -1,6 +1,8 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Put, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ClientService } from './client.service';
+import { CreateClientDto } from './dto/create-client.dto';
+import { UpdateClientDto } from './dto/update-client.dto';
 
 @Controller('client')
 export class ClientController {
@@ -23,14 +25,14 @@ export class ClientController {
     
     @Post()
     @UseGuards(AuthGuard('jwt'))
-    create(@Body() data : any) {
-        return this.clientService.create(data);
+    create(@Body() CreateClientDto: CreateClientDto) {
+        return this.clientService.create(CreateClientDto);
     }
     
-    @Put(':id')
+    @Patch(':id')
     @UseGuards(AuthGuard('jwt'))
-    update(@Param('id') id : number, @Body() data : any) {
-        return this.clientService.update(id, data);
+    update(@Param('id') id : string, @Body() UpdateClientDto : UpdateClientDto) {
+        return this.clientService.update(+id, UpdateClientDto);
     }
     
     @Delete(':id')

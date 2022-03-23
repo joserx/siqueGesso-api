@@ -1,3 +1,4 @@
+import { ClientEntity } from 'src/entities/client.entity';
 import { ProviderEntity } from 'src/entities/provider.entity';
 import {
   Column,
@@ -21,4 +22,5 @@ export class PaymentCondition {
 
   @JoinTable()
   provider: ProviderEntity[];
+  
 }

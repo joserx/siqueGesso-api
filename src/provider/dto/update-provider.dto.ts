@@ -14,6 +14,7 @@ export class UpdateProviderDto extends PartialType(CreateProviderDto) {
   contribuinte: string;
   state_registration: string;
   is_exempt: boolean;
+  minimum_billing: string;
   address: AddressEntity;
   contacts: Array<Contact>;
   payment_condition: CondicoesPagamentoEntity[];

@@ -8,6 +8,7 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { ClientEntity } from './client.entity';
 import { ProviderEntity } from './provider.entity';
 
 @Entity()
@@ -23,4 +24,7 @@ export class CondicoesPagamentoEntity {
 
   @ManyToMany(() => ProviderEntity, (provider) => provider.id)
   provider: ProviderEntity;
+
+  @ManyToMany(() => ClientEntity, (client) => client.id)
+  client: ClientEntity;
 }
