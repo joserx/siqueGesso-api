@@ -43,18 +43,43 @@ export class PedidosService {
     return await this.pedidoRepository.delete(id);
   }
 
-  async findByPage(no : any[]) {
+  async findByPage(no : any[], dataInicio: Date, dataFinal: Date ) {
     let array: any[] = []
     for(let value of no){
       array.push(Number(value))
     }
     return await this.pedidoRepository.createQueryBuilder("venda")
       .where("venda.tipoVenda = :tipo", { tipo: no[1] })
+      .andWhere(`venda.data >= '${dataInicio}'`)
+      .andWhere(`venda.data <= '${dataFinal}'`)
       .orderBy("venda.created_at", "DESC")
       .orderBy("venda.updated_at", "DESC")
-      .limit(6)
-      .offset(6*Number(no[0]))
+      .limit(5)
+      .offset(5*Number(no[0]))
       .getMany()
+
+      
+  }
+
+  async findForReport(no : any[], dataInicio: Date, dataFinal: Date, limit: number = 6, offset: number = 0 ) {
+    if(limit > 30) limit = 30
+     const pedidosData = this.pedidoRepository.createQueryBuilder("venda")
+      .where("venda.tipoVenda = :tipo", { tipo: no[1] })
+      .andWhere(`venda.data >= '${dataInicio}'`)
+      .andWhere(`venda.data <= '${dataFinal}'`)
+      .orderBy("venda.created_at", "DESC")
+      .orderBy("venda.updated_at", "DESC")
+      .limit(limit)
+      .offset(offset)
+      .getMany()
+
+      const pedidosLength = this.pedidoRepository.createQueryBuilder("venda")
+      .where("venda.tipoVenda = :tipo", { tipo: no[1] })
+      .andWhere(`venda.data >= '${dataInicio}'`)
+      .andWhere(`venda.data <= '${dataFinal}'`)
+      .getCount() 
+      const [data, count] = await Promise.all([pedidosData, pedidosLength])
+      return {data, count}
   }
 
   async findThis(id: number){

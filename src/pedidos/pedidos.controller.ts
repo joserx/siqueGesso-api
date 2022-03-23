@@ -37,8 +37,8 @@ export class PedidosController {
     return this.pedidosService.findThis(id)
   }
 
-  @Get('page/:number')
-  findByPage(@Param('number') no : any) {
-    return this.pedidosService.findByPage(no);
+  @Post('page/:number')
+  findByPage(@Param('number') no : any, @Body() data: any ) {
+    return this.pedidosService.findByPage(no, data.dataInicio.substring(0, 10), data.dataFinal.substring(0, 10));
   }
 }
