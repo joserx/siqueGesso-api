@@ -66,10 +66,14 @@ export class ProviderEntity {
   // })
   // payment_codition: PaymentCondition[];
 
-  @ManyToMany(() => CondicoesPagamentoEntity, (condicoes) => condicoes.provider, {
-    nullable: true,
-    cascade: ['insert', 'update'],
-  })
+  @ManyToMany(
+    () => CondicoesPagamentoEntity,
+    (condicoes) => condicoes.provider,
+    {
+      nullable: true,
+      cascade: ['insert', 'update'],
+    },
+  )
   @JoinTable()
   payment_condition: CondicoesPagamentoEntity[];
 
