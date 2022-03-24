@@ -5,9 +5,11 @@ import {
   Entity,
   JoinTable,
   ManyToMany,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { PedidoEntity } from './pedido.entity';
+import { TabelaProduto } from './tabela-produto.entity';
 
 @Entity()
 export class Produto {
@@ -121,4 +123,8 @@ export class Produto {
 
   @Column({ nullable: true, default: false })
   deleted: boolean;
+
+  @OneToMany(() => TabelaProduto, tabela => tabela.produto, {onDelete: 'CASCADE'})
+  tabelas: TabelaProduto[]
+
 }
