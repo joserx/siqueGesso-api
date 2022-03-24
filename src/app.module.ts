@@ -41,6 +41,7 @@ import { ContasPagarModule } from './contas-pagar/contas-pagar.module';
 import { ContasReceberModule } from './contas-receber/contas-receber.module';
 import { PermissionsModule } from './permissions/permissions.module';
 import { CondicoesPagamentoModule } from './condicoes-pagamento/condicoes-pagamento.module';
+import { TabelaProdutoModule } from './tabela-produto/tabela-produto.module';
 @Module({
   providers: [MessageGateway],
   imports: [
@@ -98,6 +99,7 @@ import { CondicoesPagamentoModule } from './condicoes-pagamento/condicoes-pagame
     ContasReceberModule,
     PermissionsModule,
     CondicoesPagamentoModule,
+    TabelaProdutoModule,
   ],
 })
 export class AppModule {}
