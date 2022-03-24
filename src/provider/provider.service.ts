@@ -17,10 +17,6 @@ export class ProviderService {
   ) {}
 
   async create(createProviderDto: CreateProviderDto) {
-    // const payment_coditions = await this.MatchPayment( createProviderDto.payment_condition )
-    // let obj: any = createProviderDto;
-    // obj.payment_codition = payment_coditions;
-
     let providerObj = await this.providerRepository.create(createProviderDto);
 
     return await this.providerRepository.save(providerObj);

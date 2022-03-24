@@ -25,8 +25,8 @@ export class ClientController {
     
     @Post()
     @UseGuards(AuthGuard('jwt'))
-    create(@Body() CreateClientDto: CreateClientDto) {
-        return this.clientService.create(CreateClientDto);
+    create(@Body() createClientDto: CreateClientDto) {
+        return this.clientService.create(createClientDto);
     }
     
     @Patch(':id')
