@@ -13,15 +13,15 @@ export class ClientService {
     ) {}
 
     async find() {
-        return await this.clientRepository.find({ select: ['id', 'name', 'surname', 'email', 'companyEmail', 'companyTelephone', 'telephone', 'fantasyName', 'cnpj',], relations: ['addresses', 'condicoesPagamento',] });
+        return await this.clientRepository.find({relations: ['addresses', 'condicoesPagamento'] });
     }
 
     async findOne(id : number) {
-        return await this.clientRepository.findOne(id, { relations: ['addresses', 'tabela'] });
+        return await this.clientRepository.findOne(id, { relations: ['addresses', 'tabela', 'condicoesPagamento'] });
     }
 
-    async create(CreateClientDto : CreateClientDto) {
-        let client = await this.clientRepository.create(CreateClientDto);
+    async create(createClientDto : CreateClientDto) {
+        let client = await this.clientRepository.create(createClientDto);
 
         return await this.clientRepository.save(client);
     }

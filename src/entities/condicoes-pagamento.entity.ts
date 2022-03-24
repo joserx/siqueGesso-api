@@ -26,5 +26,5 @@ export class CondicoesPagamentoEntity {
   provider: ProviderEntity;
 
   @ManyToMany(() => ClientEntity, (client) => client.id)
-  client: ClientEntity;
+  client: ClientEntity[];
 }
