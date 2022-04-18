@@ -1,9 +1,10 @@
 import { Itens } from "src/entities/iten.entity";
+import {ProviderEntity} from 'src/entities/provider.entity'
 
 export class CreatePedidoCompraDto {
 
         data?: string;
-        fornecedor?: string;
+        fornecedor?: ProviderEntity;
         faturamentoMinimo?: number;
         razaoSocial?: string;
         cnpj?: string;

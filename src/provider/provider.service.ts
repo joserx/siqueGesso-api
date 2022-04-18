@@ -24,7 +24,7 @@ export class ProviderService {
 
   async findAll(): Promise<ProviderEntity[] | undefined> {
     return this.providerRepository
-      .find({ relations: ['contacts', 'address', 'payment_condition'] })
+      .find({ relations: ['contacts', 'address', 'payment_condition',] })
       .catch((e) => {
         throw new HttpException(e, HttpStatus.INTERNAL_SERVER_ERROR);
       });

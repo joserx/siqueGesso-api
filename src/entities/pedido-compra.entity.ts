@@ -11,6 +11,7 @@ import {
 import { CondicoesPagamentoEntity } from './condicoes-pagamento.entity';
 
 import { Itens } from './iten.entity';
+import { ProviderEntity } from './provider.entity';
 
 @Entity()
 export class PedidoCompra {
@@ -19,9 +20,6 @@ export class PedidoCompra {
 
   @Column({ nullable: true })
   data: string;
-
-  @Column({ nullable: true })
-  fornecedor: string;
 
   @Column({ nullable: true })
   faturamentoMinimo: number;
@@ -62,6 +60,12 @@ export class PedidoCompra {
   @OneToMany(() => CondicoesPagamentoEntity, (condicoes) => condicoes.id)
   @JoinColumn()
   condicoesPagamento: CondicoesPagamentoEntity[];
+
+  @ManyToOne(() => ProviderEntity, (providerEntity) => providerEntity.id, {
+    cascade: false
+  })
+  @JoinColumn()
+  fornecedor: ProviderEntity;
 
   @Column({ nullable: true })
   dataVenc: string;

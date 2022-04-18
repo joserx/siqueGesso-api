@@ -22,6 +22,11 @@ export class PedidosController {
     return this.pedidosService.findOne(+id);
   }
 
+  @Get('resumo/:id')
+  findResumo(@Param('id') id: number){
+    return this.pedidosService.findResumo(id);
+  }
+
   @Patch(':id')
   update(@Param('id') id: number, @Body() data: any) {
     return this.pedidosService.update(+id, data);

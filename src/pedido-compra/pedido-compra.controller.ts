@@ -19,6 +19,8 @@ export class PedidoCompraController {
 
   @Post()
   create(@Body() createPedidoCompraDto: CreatePedidoCompraDto) {
+    console.log('controller',createPedidoCompraDto);
+    
     return this.pedidoCompraService.create(createPedidoCompraDto);
   }
 

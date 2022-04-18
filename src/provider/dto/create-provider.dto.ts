@@ -1,5 +1,6 @@
 import { AddressEntity } from "src/entities/address.entity";
 import { CondicoesPagamentoEntity } from "src/entities/condicoes-pagamento.entity";
+import { PedidoCompra } from "src/entities/pedido-compra.entity";
 import { Contact } from "src/provider/entities/contact.entity";
 import { PaymentCondition } from "src/provider/entities/payment_condition.entity";
 
@@ -18,6 +19,7 @@ export class CreateProviderDto {
     contacts: Array<Contact>
     payment_condition: CondicoesPagamentoEntity[];
     first_payment: Date;
+    compras: PedidoCompra[]
     last_payment: Date;
     notes: string;
 }

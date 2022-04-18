@@ -21,7 +21,7 @@ export class PedidoCompraService {
   }
 
   async findAll() {
-    return await this.PedidoCompraRepository.find();
+    return await this.PedidoCompraRepository.find({relations: ['fornecedor']});
   }
 
   findOne(id: number) {

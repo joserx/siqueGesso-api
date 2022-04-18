@@ -16,6 +16,8 @@ import { Contact } from 'src/provider/entities/contact.entity';
 import { Produto } from 'src/entities/produto.entity';
 import { Suprimento } from 'src/entities/suprimento.entity';
 import { CondicoesPagamentoEntity } from './condicoes-pagamento.entity';
+import { PedidoCompra } from './pedido-compra.entity';
+
 
 @Entity()
 export class ProviderEntity {
@@ -88,6 +90,11 @@ export class ProviderEntity {
   })
   @JoinTable({ name: 'suprimento_provider' })
   suprimento: Suprimento[];
+
+  @OneToMany(() => PedidoCompra, (pedidocompra) => pedidocompra.id, {
+    cascade: false
+  })
+  compras: PedidoCompra[];
 
   @Column()
   first_payment: Date;

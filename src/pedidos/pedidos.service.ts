@@ -34,6 +34,11 @@ export class PedidosService {
     return await this.pedidoRepository.findOne(id, {relations: ['produto', 'item']});
   }
 
+  async findResumo(id: number){
+    return await this.pedidoRepository.createQueryBuilder("venda")
+    .where("venda.clienteId = :cliente", {cliente: id}).getMany()
+  }
+
   async update(id: number, data: any) {
     let array = await this.pedidoRepository.findOne(id)
     return await this.pedidoRepository.save({id, ...array, ...data})
